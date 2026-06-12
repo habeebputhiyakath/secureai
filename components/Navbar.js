@@ -374,6 +374,7 @@ export default function Navbar() {
     flexShrink: 0,
   }}
 >
+{/* yuu */}
   
   <img
     src="/logo.png" // replace with your logo path
