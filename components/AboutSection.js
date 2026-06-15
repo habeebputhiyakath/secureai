@@ -250,7 +250,7 @@ export default function AboutSection() {
                 className="overflow-hidden rounded-[32px]"
               >
                 <img
-                  src="/anpr.png"
+                  src="/about.png"
                   alt="ANPR"
                   className="w-full h-[500px] object-cover"
                 />
