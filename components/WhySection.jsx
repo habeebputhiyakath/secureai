@@ -54,7 +54,6 @@ export default function WhySection() {
     return () => { clearInterval(intervalRef.current); cancelAnimationFrame(rafRef.current); };
   }, [paused, activeId, advance]);
 
-  /* ── Reveal on scroll ── */
   useEffect(() => {
     const io = new IntersectionObserver(
       entries => entries.forEach(e => {
@@ -75,7 +74,6 @@ export default function WhySection() {
 
         .ws-section { font-family: 'DM Sans', sans-serif; }
 
-        /* Reveal */
         .ws-rev {
           opacity: 0;
           transform: translateY(26px);
@@ -88,7 +86,6 @@ export default function WhySection() {
         .ws-d2 { transition-delay: 0.16s; }
         .ws-d3 { transition-delay: 0.24s; }
 
-        /* Dot grid bg */
         .ws-dotgrid::before {
           content: '';
           position: absolute; inset: 0; pointer-events: none;
@@ -97,7 +94,6 @@ export default function WhySection() {
           opacity: 0.45;
         }
 
-        /* Eyebrow pill */
         .ws-eyebrow {
           font-size: 0.68rem;
           font-weight: 700;
@@ -105,7 +101,6 @@ export default function WhySection() {
           text-transform: uppercase;
         }
 
-        /* Accent underline */
         .ws-accent-line { position: relative; display: inline-block; }
         .ws-accent-line::after {
           content: '';
@@ -120,11 +115,11 @@ export default function WhySection() {
         }
         .ws-vis .ws-accent-line::after { transform: scaleX(1); }
 
-        @keyframes ws-ping { 0% { transform: scale(1); opacity: 0.45; } 80%,100% { transform: scale(2.8); opacity: 0; } }
-        @keyframes ws-card-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes ws-ping     { 0% { transform: scale(1); opacity: 0.45; } 80%,100% { transform: scale(2.8); opacity: 0; } }
+        @keyframes ws-card-in  { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes ws-icon-pop { 0% { transform: scale(0.7); opacity: 0; } 60% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-        @keyframes ws-feat-in { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes ws-scan { 0% { top: -2px; } 100% { top: 100%; } }
+        @keyframes ws-feat-in  { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes ws-scan     { 0% { top: -2px; } 100% { top: 100%; } }
       `}</style>
 
       <section
@@ -134,18 +129,18 @@ export default function WhySection() {
         onMouseLeave={() => setPaused(false)}
         aria-label="Why SecureAAI"
       >
-        {/* Soft blue blobs */}
+        {/* Blobs */}
         <div className="absolute -top-24 right-0 w-[420px] h-[420px] rounded-full pointer-events-none opacity-15"
           style={{ background: 'radial-gradient(circle at 40% 40%, #dbeafe, transparent 70%)' }} />
         <div className="absolute bottom-0 -left-24 w-[320px] h-[320px] rounded-full pointer-events-none opacity-10"
           style={{ background: 'radial-gradient(circle at 60% 60%, #e0f2fe, transparent 70%)' }} />
 
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        {/* ── Same container as HeroSection ── */}
+        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-20">
 
-          {/* ── Header ── */}
+          {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 border-b border-slate-200 pb-10 mb-10">
             <div>
-              {/* Eyebrow pill */}
               <div className="ws-rev ws-d0 mb-5">
                 <span
                   className="ws-eyebrow inline-flex items-center gap-2 px-4 py-2 rounded-full"
@@ -157,7 +152,6 @@ export default function WhySection() {
                   Why SecureAAI
                 </span>
               </div>
-
               <h2 className="ws-rev ws-d1 text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-slate-900">
                 The SecureAAI{' '}
                 <span className="ws-accent-line" style={{ color: '#0161FE' }}>Edge</span>
@@ -175,18 +169,17 @@ export default function WhySection() {
 
           {/* Map + overlay */}
           <div className="ws-rev ws-d3 relative w-full">
-            {/* Map */}
             <div className="relative w-full aspect-square sm:aspect-[4/3] md:aspect-[16/7] overflow-hidden rounded-2xl border border-slate-200 bg-slate-900">
               <img
                 src="/car.jpeg"
                 alt="Smart city visualization"
                 className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
               />
-              {/* Subtle scan line */}
+              {/* Scan line */}
               <div className="absolute left-0 right-0 h-px z-10 pointer-events-none bg-gradient-to-r from-transparent via-[#5b9fff]/40 to-transparent animate-[ws-scan_4s_linear_infinite]" />
-              {/* Edge vignette */}
+              {/* Vignette */}
               <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,0.35)] rounded-2xl" />
-              {/* Right fade for card overlap on desktop */}
+              {/* Right fade */}
               <div className="hidden md:block absolute inset-y-0 right-0 w-[38%] pointer-events-none bg-gradient-to-l from-slate-950/70 to-transparent" />
 
               {/* Hotspots */}
@@ -206,16 +199,14 @@ export default function WhySection() {
                     {isActive && (
                       <div className="absolute -inset-2 rounded-full bg-[#0161FE]/30 animate-[ws-ping_1.6s_ease-out_infinite] pointer-events-none" />
                     )}
-                    {/* Dot */}
+                    {/* Dot — always blue bg, number or icon inside */}
                     <div
                       className={`relative flex items-center justify-center rounded-full transition-all duration-300
                         ${isActive
                           ? 'w-[42px] h-[42px] sm:w-[50px] sm:h-[50px] text-white border-2 border-white shadow-[0_0_0_4px_rgba(1,97,254,0.25),0_8px_24px_rgba(0,0,0,0.4)]'
                           : 'w-7 h-7 sm:w-8 sm:h-8 border-2 border-white/80 shadow-md hover:scale-110'
                         }`}
-                      style={{
-                        background: isActive ? '#0161FE' : 'rgba(1,97,254,0.55)',
-                      }}
+                      style={{ background: '#0161FE' }}
                     >
                       {isActive ? (
                         <IconComp size={20} strokeWidth={1.75} />
@@ -225,7 +216,7 @@ export default function WhySection() {
                         </span>
                       )}
                     </div>
-                    {/* Tooltip */}
+                    {/* Tooltip (inactive only) */}
                     {!isActive && (
                       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 whitespace-nowrap bg-slate-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                         {spot.title}
@@ -276,31 +267,21 @@ function InfoCard({ active, progress, hotspots, onPick, activeId }) {
   const IconComp = active.Icon;
   return (
     <div className="relative flex flex-col overflow-hidden bg-white rounded-2xl border border-slate-200 shadow-[0_24px_60px_rgba(0,0,0,0.12)] p-6 pb-5 animate-[ws-card-in_0.4s_ease_both]">
-
-      {/* Index label */}
       <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-slate-400 block mb-4">
         0{active.id} / 0{hotspots.length} &nbsp;·&nbsp; Feature
       </span>
-
-      {/* Icon */}
       <div
         className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 animate-[ws-icon-pop_0.45s_ease_both]"
         style={{ background: 'rgba(1,97,254,0.08)', color: '#0161FE', border: '1px solid rgba(1,97,254,0.18)' }}
       >
         <IconComp size={20} strokeWidth={1.75} />
       </div>
-
-      {/* Title */}
       <h3 className="text-[17px] font-bold text-slate-900 tracking-tight leading-snug mb-2">
         {active.title}
       </h3>
-
-      {/* Desc */}
       <p className="text-[13px] text-slate-500 leading-relaxed mb-5">
         {active.desc}
       </p>
-
-      {/* Features */}
       <div className="flex flex-col gap-2 mb-5">
         {active.features.map((f, i) => (
           <div
@@ -313,8 +294,6 @@ function InfoCard({ active, progress, hotspots, onPick, activeId }) {
           </div>
         ))}
       </div>
-
-      {/* Progress strips */}
       <div className="flex gap-1.5 pt-4 border-t border-slate-100">
         {hotspots.map(h => {
           const isA = h.id === activeId;

@@ -6,19 +6,19 @@ const NAV_ITEMS = [
   { label: 'Solutions', type: 'mega' },
   {
     label: 'Success Stories', type: 'dropdown',
-    items: ['Case Studies', 'Smart Cities', 'Transportation', 'Enterprise Security', 'Government Projects'],
+    // items: ['Case Studies', 'Smart Cities', 'Transportation', 'Enterprise Security', 'Government Projects'],
   },
   {
     label: 'Support', type: 'dropdown',
-    items: ['Support Center', 'Documentation', 'Downloads', 'Contact Support', 'Training'],
+    // items: ['Support Center', 'Documentation', 'Downloads', 'Contact Support', 'Training'],
   },
   {
     label: 'Partners', type: 'dropdown',
-    items: ['Technology Partners', 'System Integrators', 'Become a Partner'],
+    // items: ['Technology Partners', 'System Integrators', 'Become a Partner'],
   },
   {
     label: 'Company', type: 'dropdown',
-    items: ['About Us', 'Leadership', 'Careers', 'News', 'Contact'],
+    items: ['About Us', 'trust center', 'blog', 'Contact'],
   },
 ];
 
@@ -111,7 +111,7 @@ function SolutionsMega() {
 function DropdownMenu({ items }) {
   return (
     <div className="dropdown-panel">
-      {items.map(item => (
+      {items?.map(item => (
         <a key={item} href="#" className="dropdown-item">{item}</a>
       ))}
     </div>

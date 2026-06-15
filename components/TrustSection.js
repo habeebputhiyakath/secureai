@@ -68,7 +68,7 @@ export default function TrustSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-white py-24 sm:py-28 lg:py-32 overflow-hidden font-sans">
+    <section ref={ref} className="relative bg-white py-20 overflow-hidden font-sans">
       <style>{`
         @keyframes navisScroll {
           0%   { transform: translateX(0); }
@@ -82,7 +82,7 @@ export default function TrustSection() {
         }
       `}</style>
 
-      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
 
         {/* ── Eyebrow + Heading (centered) ── */}
         <div className="tr-rev opacity-0 translate-y-6 transition-all duration-700 ease-out text-center mb-16 lg:mb-20">
