@@ -22,7 +22,7 @@ const steps = [
     title: 'Solution Design',
     label: 'Architecture & Planning',
     desc: 'Custom architecture tailored to your infrastructure, compliance requirements, and scalability goals.',
-    image: 'https://images.unsplash.com/photo-1600267204026-85c3cc8e96cd?w=800&q=80&auto=format&fit=crop',
+    image: 'https://media.licdn.com/dms/image/v2/C5612AQGaiIv1mSVQfg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1557458101733?e=2147483647&v=beta&t=8GSZIQXzHZMgsykOSOYrM_xJZkQ-u214dt-mxTjmsEk',
     tag: 'Week 1–2',
     stat: '100%',
     statLabel: 'custom-built plans',
@@ -93,10 +93,14 @@ export default function DeploymentSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-        .dep2-section { font-family: 'Poppins', sans-serif; }
+        /* ── Base ── */
+        .dep2-section {
+          font-family: 'DM Sans', sans-serif;
+        }
 
+        /* ── Reveal ── */
         .dep2-fade {
           opacity: 0;
           transform: translateY(24px);
@@ -109,7 +113,7 @@ export default function DeploymentSection() {
         .dep2-d2 { transition-delay: 0.18s; }
         .dep2-d3 { transition-delay: 0.26s; }
 
-        /* Left panel step item */
+        /* ── Step item ── */
         .dep2-step-item {
           display: flex;
           align-items: flex-start;
@@ -122,7 +126,7 @@ export default function DeploymentSection() {
           position: relative;
         }
         .dep2-step-item:hover:not(.dep2-step-active) {
-          background: #f8fafc;
+          background: #f1f5f9;
           border-color: #e2e8f0;
           transform: translateX(4px);
         }
@@ -130,10 +134,7 @@ export default function DeploymentSection() {
           background: #ffffff;
           border-color: rgba(1,97,254,0.2);
           box-shadow: 0 4px 24px rgba(1,97,254,0.08);
-          transform: translateX(0);
         }
-
-        /* Active left accent bar */
         .dep2-step-item.dep2-step-active::before {
           content: '';
           position: absolute;
@@ -143,6 +144,7 @@ export default function DeploymentSection() {
           background: #0161FE;
         }
 
+        /* ── Step number ── */
         .dep2-step-num {
           font-family: 'JetBrains Mono', monospace;
           font-size: 10px;
@@ -155,6 +157,7 @@ export default function DeploymentSection() {
         }
         .dep2-step-active .dep2-step-num { color: #0161FE; }
 
+        /* ── Step icon ── */
         .dep2-step-icon {
           width: 38px; height: 38px;
           border-radius: 10px;
@@ -171,11 +174,12 @@ export default function DeploymentSection() {
           transform: scale(1.05);
         }
 
+        /* ── Step title — DM Sans, heavy ── */
         .dep2-step-title {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 1.05rem;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 1rem;
           font-weight: 700;
-          letter-spacing: 0.01em;
+          letter-spacing: -0.01em;
           color: #0f172a;
           line-height: 1.2;
           margin-bottom: 3px;
@@ -183,14 +187,15 @@ export default function DeploymentSection() {
         }
         .dep2-step-active .dep2-step-title { color: #0161FE; }
 
+        /* ── Step label ── */
         .dep2-step-label {
-          font-size: 11px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12px;
           color: #94a3b8;
           font-weight: 500;
-          letter-spacing: 0.03em;
         }
 
-        /* Tag pill in step */
+        /* ── Tag pill ── */
         .dep2-tag {
           font-family: 'JetBrains Mono', monospace;
           font-size: 9.5px;
@@ -205,7 +210,7 @@ export default function DeploymentSection() {
           white-space: nowrap;
         }
 
-        /* Right image panel */
+        /* ── Image panel ── */
         .dep2-image-panel {
           border-radius: 20px;
           overflow: hidden;
@@ -225,11 +230,11 @@ export default function DeploymentSection() {
           transform: scale(1);
         }
 
-        /* Overlay info card */
+        /* ── Overlay ── */
         .dep2-overlay {
           position: absolute;
           bottom: 0; left: 0; right: 0;
-          padding: 24px 24px 24px;
+          padding: 24px;
           background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
         }
 
@@ -245,55 +250,60 @@ export default function DeploymentSection() {
           margin-bottom: 14px;
         }
         .dep2-stat-num {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 1.5rem;
-          font-weight: 700;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 1.4rem;
+          font-weight: 600;
           color: #fff;
           line-height: 1;
         }
         .dep2-stat-text {
+          font-family: 'DM Sans', sans-serif;
           font-size: 11px;
           color: rgba(255,255,255,0.75);
           font-weight: 500;
-          letter-spacing: 0.03em;
         }
 
         .dep2-overlay-title {
-          font-family: 'Barlow Condensed', sans-serif;
-          font-size: 1.6rem;
-          font-weight: 700;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 1.35rem;
+          font-weight: 800;
           color: #ffffff;
-          line-height: 1.15;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
           margin-bottom: 8px;
-          letter-spacing: 0.01em;
         }
         .dep2-overlay-desc {
-          font-size: 12.5px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13px;
           color: rgba(255,255,255,0.72);
           line-height: 1.65;
           max-width: 420px;
         }
 
-        /* Progress dots */
+        /* ── Progress dots ── */
         .dep2-dot {
           width: 6px; height: 6px;
           border-radius: 99px;
           background: rgba(255,255,255,0.3);
           cursor: pointer;
           transition: background 0.25s, width 0.3s cubic-bezier(0.22,1,0.36,1);
+          border: none;
+          padding: 0;
         }
         .dep2-dot.dep2-dot-active {
           background: #0161FE;
           width: 20px;
         }
 
-        /* CTA buttons */
+        /* ── CTA buttons ── */
         .dep2-cta-fill {
           display: inline-flex; align-items: center; gap: 8px;
-          font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.12em; text-transform: uppercase;
           color: #fff; background: #0161FE;
           border: 1.5px solid #0161FE;
-          border-radius: 9999px; padding: 10px 22px;
+          border-radius: 9999px; padding: 12px 24px;
           text-decoration: none; white-space: nowrap;
           transition: background 0.22s, color 0.22s, transform 0.22s, box-shadow 0.22s;
         }
@@ -307,10 +317,12 @@ export default function DeploymentSection() {
 
         .dep2-cta-outline {
           display: inline-flex; align-items: center; gap: 8px;
-          font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.72rem; font-weight: 700;
+          letter-spacing: 0.12em; text-transform: uppercase;
           color: #0f172a; background: #fff;
           border: 1.5px solid #e2e8f0;
-          border-radius: 9999px; padding: 10px 22px;
+          border-radius: 9999px; padding: 12px 24px;
           text-decoration: none; white-space: nowrap;
           transition: background 0.22s, color 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
         }
@@ -322,12 +334,43 @@ export default function DeploymentSection() {
         .dep2-cta-outline:hover svg { transform: translateX(3px); }
         .dep2-cta-outline svg { transition: transform 0.2s; }
 
-        /* Connector line between steps */
+        /* ── Connector ── */
         .dep2-connector {
           width: 1px;
           background: linear-gradient(180deg, rgba(1,97,254,0.25), #e2e8f0 80%);
           margin: 4px 0 4px 28px;
           height: 12px;
+        }
+
+        /* ── Section heading ── */
+        .dep2-heading {
+          font-family: 'DM Sans', sans-serif;
+          font-size: clamp(2rem, 4.5vw, 3rem);
+          font-weight: 800;
+          letter-spacing: -0.025em;
+          line-height: 1.08;
+          color: #0f172a;
+        }
+        .dep2-heading em {
+          font-style: normal;
+          font-weight: 400;
+          color: #94a3b8;
+        }
+
+        .dep2-eyebrow {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #94a3b8;
+        }
+
+        .dep2-subtext {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 13.5px;
+          color: #64748b;
+          line-height: 1.65;
         }
 
         @media (max-width: 768px) {
@@ -342,28 +385,19 @@ export default function DeploymentSection() {
           {/* ── Header ── */}
           <div className={`dep2-fade dep2-d0 ${visible ? 'dep2-in' : ''} flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 border-b border-slate-200 pb-10 mb-10`}>
             <div>
-              <p
-                style={{ fontFamily: "'JetBrains Mono', monospace" }}
-                className="text-[11px] font-medium uppercase tracking-[0.18em] text-slate-400 mb-4"
-              >
-                How It Works
-              </p>
-              <h2
-                style={{ fontFamily: "'Barlow Condensed', sans-serif" }}
-                className="text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] text-slate-900"
-              >
+              <p className="dep2-eyebrow mb-4">How It Works</p>
+              <h2 className="dep2-heading">
                 Deployment{' '}
-                <em className="font-light not-italic text-slate-400">in 4 Steps,</em>
-                <br className="hidden sm:block" />{' '}
-                4 Weeks
+                <em>in 4 Steps</em>
+                
               </h2>
             </div>
-            <p className="text-slate-500 text-[13.5px] leading-relaxed max-w-xs sm:text-right">
+            <p className="dep2-subtext max-w-xs sm:text-right">
               From initial consultation to go-live with zero operational disruption.
             </p>
           </div>
 
-          {/* ── Main layout: steps list + image panel ── */}
+          {/* ── Main layout ── */}
           <div className={`dep2-fade dep2-d1 ${visible ? 'dep2-in' : ''} dep2-layout flex gap-6 items-stretch`}>
 
             {/* LEFT: step list */}
@@ -375,13 +409,8 @@ export default function DeploymentSection() {
                     onClick={() => setActiveStep(i)}
                     onMouseEnter={() => setActiveStep(i)}
                   >
-                    {/* Number */}
                     <span className="dep2-step-num pt-1">{s.number}</span>
-
-                    {/* Icon */}
                     <div className="dep2-step-icon">{s.icon}</div>
-
-                    {/* Text */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap mb-1">
                         <p className="dep2-step-title">{s.title}</p>
@@ -394,7 +423,7 @@ export default function DeploymentSection() {
                 </div>
               ))}
 
-              {/* Bottom CTA */}
+              {/* Bottom CTAs */}
               <div className="flex flex-wrap gap-3 pt-4">
                 <a href="#demo" className="dep2-cta-fill">
                   Schedule Consultation <ArrowIcon />
@@ -430,7 +459,6 @@ export default function DeploymentSection() {
   );
 }
 
-/* Separate image panel to handle per-image load state */
 function ImagePanel({ step, stepIndex }) {
   const [loaded, setLoaded] = useState(false);
   const [current, setCurrent] = useState(step);
@@ -451,8 +479,6 @@ function ImagePanel({ step, stepIndex }) {
         className={`dep2-img absolute inset-0 w-full h-full object-cover ${loaded ? 'dep2-img-loaded' : ''}`}
         style={{ position: 'absolute', inset: 0 }}
       />
-
-      {/* Overlay */}
       <div className="dep2-overlay">
         <div className="dep2-stat-badge">
           <span className="dep2-stat-num">{current.stat}</span>

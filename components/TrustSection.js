@@ -1,21 +1,14 @@
 'use client';
 import { useEffect, useRef } from 'react';
 
-const logos = [
-  { name: 'SENTINEL.CORP', icon: '🛡️' },
-  { name: 'NEXUS SYSTEMS', icon: '🔗' },
-  { name: 'METRO_GOV',     icon: '🏛️' },
-  { name: 'OMNI_TECH',     icon: '🌐' },
-  { name: 'SKYPORT_INTL',  icon: '✈️' },
-  { name: 'GUARDIAN AI',   icon: '🤖' },
-  { name: 'APEX SECURE',   icon: '🔐' },
-  { name: 'URBANFLOW',     icon: '🏙️' },
-];
+const logos = Array.from({ length: 10 }, (_, i) => ({
+  src: `/clients/${i + 1}.png`,
+  alt: `Client logo ${i + 1}`,
+}));
 
 export default function TrustSection() {
   const ref = useRef(null);
 
-  /* ── Reveal-on-scroll ── */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) =>
@@ -29,7 +22,6 @@ export default function TrustSection() {
     return () => observer.disconnect();
   }, []);
 
-  /* ── Counting number animation ── */
   useEffect(() => {
     const counters = ref.current?.querySelectorAll('[data-target]');
     if (!counters) return;
@@ -68,7 +60,7 @@ export default function TrustSection() {
   }, []);
 
   return (
-    <section ref={ref} className="relative bg-white py-20 overflow-hidden font-sans">
+    <section ref={ref} className="relative bg-white pt-22 pb-10 overflow-hidden font-sans">
       <style>{`
         @keyframes navisScroll {
           0%   { transform: translateX(0); }
@@ -84,12 +76,12 @@ export default function TrustSection() {
 
       <div className="mx-auto max-w-[1280px] px-6 lg:px-10">
 
-        {/* ── Eyebrow + Heading (centered) ── */}
+        {/* ── Eyebrow + Heading ── */}
         <div className="tr-rev opacity-0 translate-y-6 transition-all duration-700 ease-out text-center mb-16 lg:mb-20">
           <span className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-neutral-500">
             Expertise
           </span>
-          <h2 className="mt-6 mx-auto max-w-3xl text-2xl sm:text-3xl lg:text-4xl font-medium leading-snug tracking-tight">
+          <h2 className="mt-6 mx-auto max-w-none text-base sm:text-lg lg:text-xl font-medium leading-relaxed tracking-tight">
             <span className="text-neutral-900">
               Discover our commitment to security excellence.{' '}
             </span>
@@ -103,27 +95,24 @@ export default function TrustSection() {
           </h2>
         </div>
 
-        {/* ── 3-col image / stat grid ── */}
+        {/* ── 3-col grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 lg:gap-5 mb-16 lg:mb-20">
 
-          {/* Left photo */}
           <div
             className="tr-rev opacity-0 translate-y-6 transition-all duration-700 ease-out sm:col-span-1 rounded-3xl overflow-hidden bg-neutral-100 aspect-[4/5] sm:aspect-auto sm:h-full min-h-[280px]"
             style={{ transitionDelay: '60ms' }}
           >
             <img
-              src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80"
+              src="https://www.ecmag.com/images/default-source/articles/shutterstock_755270563fcc168a3-2dff-42e3-b3fc-725196559716.tmb-art-detail.jpg?Culture=en&sfvrsn=405b3b56_2"
               alt="Security operations specialist"
               className="w-full h-full object-cover"
             />
           </div>
 
-          {/* Middle: stacked stat cards */}
           <div
             className="tr-rev opacity-0 translate-y-6 transition-all duration-700 ease-out sm:col-span-2 grid grid-rows-2 gap-4 lg:gap-5"
             style={{ transitionDelay: '120ms' }}
           >
-            {/* Blue stat card */}
             <div className="rounded-3xl bg-[#0161FE] p-6 sm:p-8 flex flex-col justify-between text-white">
               <p className="text-sm sm:text-base leading-relaxed max-w-sm">
                 Complete enterprise protection through AI-driven security
@@ -139,11 +128,8 @@ export default function TrustSection() {
               </span>
             </div>
 
-            {/* Dark stat card */}
-            <div className="rounded-3xl bg-neutral-900 p-6 sm:p-8 flex flex-col justify-between text-white">
-              <div className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-base">
-                🛡️
-              </div>
+            <div className="rounded-3xl bg-neutral-900 p-20 sm:p-8 flex flex-col justify-between text-white">
+             
               <div>
                 <span
                   className="font-mono text-5xl sm:text-6xl font-semibold tabular-nums"
@@ -161,13 +147,12 @@ export default function TrustSection() {
             </div>
           </div>
 
-          {/* Right photo */}
           <div
             className="tr-rev opacity-0 translate-y-6 transition-all duration-700 ease-out sm:col-span-1 rounded-3xl overflow-hidden bg-neutral-100 aspect-[4/5] sm:aspect-auto sm:h-full min-h-[280px]"
             style={{ transitionDelay: '180ms' }}
           >
             <img
-              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80"
+              src="/trust.png"
               alt="Enterprise client"
               className="w-full h-full object-cover"
             />
@@ -183,15 +168,15 @@ export default function TrustSection() {
           <div className="navis-marquee-outer relative overflow-hidden">
             <div className="absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-neutral-50 to-transparent pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-neutral-50 to-transparent pointer-events-none" />
-            <div className="navis-marquee-track flex gap-3 w-max">
+            <div className="navis-marquee-track flex items-center gap-0 w-max">
               {[...logos, ...logos, ...logos].map((logo, i) => (
-                <div
-                  key={i}
-                  className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-5 py-2.5 text-xs font-semibold text-neutral-600 tracking-wide whitespace-nowrap hover:border-[#0161FE]/30 hover:text-[#0161FE] hover:-translate-y-0.5 transition-all"
-                >
-                  <span className="text-[15px]">{logo.icon}</span>
-                  {logo.name}
-                </div>
+              
+                  <img
+                    src={logo.src}
+                    alt={logo.alt}
+                    className=" w-auto max-w-[180px] object-contain"
+                  />
+                
               ))}
             </div>
           </div>

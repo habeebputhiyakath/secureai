@@ -101,8 +101,14 @@ export default function HeroSection() {
 
             {/* H1 */}
             <h1 className="font-sans text-[clamp(2.6rem,4.5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-5 animate-[saaiUp_0.65s_0.18s_ease_both]">
-              AI-powered security &amp;{' '}
-              <span className="text-[#4d8bff]">intelligent surveillance</span>
+              <span className="hidden sm:inline-block whitespace-nowrap">AI-powered security &amp; </span>
+              <br className="hidden sm:block" />
+              <span className="hidden sm:inline-block text-[#4d8bff] whitespace-nowrap">intelligent <span className="text-white">surveillance</span></span>
+
+              <span className="block sm:hidden">AI-powered</span>
+              <span className="block sm:hidden">security</span>
+              <span className="block sm:hidden">&amp; intelligent</span>
+              <span className="block sm:hidden text-[#4d8bff]">surveillance</span>
             </h1>
 
             {/* Body */}

@@ -153,6 +153,37 @@ export default function EcosystemSection() {
         .eco-see-more svg { transition: transform 0.2s; }
 
         .eco-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* ── Blue number badge ── */
+        .eco-num-badge {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 0.14em;
+          color: #ffffff;
+          background: #0161FE;
+          border-radius: 99px;
+          padding: 4px 10px;
+          line-height: 1;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        /* Blue badge for list rows */
+        .eco-num-badge-sm {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 9px;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          color: #ffffff;
+          background: #0161FE;
+          border-radius: 99px;
+          padding: 3px 8px;
+          line-height: 1;
+          display: inline-flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
       `}</style>
 
       <section
@@ -166,7 +197,6 @@ export default function EcosystemSection() {
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full pointer-events-none opacity-10"
           style={{ background: 'radial-gradient(circle at 60% 60%, #e0f2fe, transparent 70%)' }} />
 
-        {/* ── Same container as HeroSection ── */}
         <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10">
 
           {/* Header */}
@@ -180,14 +210,13 @@ export default function EcosystemSection() {
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
-                  Portfolio
+                  Our Ecosystem
                 </span>
               </div>
               <h2 className="eco-rev eco-d1 text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1] text-slate-900">
-                Our Success Stories{' '}
-                <span className="eco-accent-line" style={{ color: '#0161FE' }}>Real Results,</span>
+                Security Infrastructure{' '}
+                <span className="eco-accent-line" style={{ color: '#0161FE' }}>Reimagined,</span>
                 <br className="hidden sm:block" />
-                {' '}Real Impact
               </h2>
             </div>
             <div className="eco-rev eco-d2 shrink-0 self-start sm:self-auto">
@@ -218,9 +247,12 @@ export default function EcosystemSection() {
                   />
                 </motion.div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/30 to-transparent" />
-                <span className="eco-mono absolute top-5 left-5 text-[11px] font-semibold tracking-[0.18em] text-white/35 z-10">
+
+                {/* Blue number badge — top left */}
+                <span className="eco-num-badge absolute top-5 left-5 z-10">
                   0{i + 1}
                 </span>
+
                 <div className="absolute top-5 right-5 z-10 w-[34px] h-[34px] rounded-full border border-white/25 bg-white/10 flex items-center justify-center text-white transition-all duration-200 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]">
                   <ArrowIcon />
                 </div>
@@ -253,9 +285,11 @@ export default function EcosystemSection() {
                   i === 0 ? 'eco-d2' : i === 1 ? 'eco-d3' : i === 2 ? 'eco-d4' : 'eco-d5'
                 }`}
               >
-                <span className="eco-mono hidden sm:block text-[11px] font-semibold tracking-[0.16em] text-slate-300 w-7 shrink-0">
+                {/* Blue number badge — visible on all screens */}
+                <span className="eco-num-badge-sm">
                   0{i + 3}
                 </span>
+
                 <motion.div
                   initial={{ scale: 1.2, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}

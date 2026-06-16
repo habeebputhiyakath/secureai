@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
- import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 
 const features = [
@@ -116,7 +116,7 @@ export default function AboutSection() {
           transform: translateY(-2px);
         }
 
-        /* CTA pill button — filled #0161FE by default, white text on hover */
+        /* CTA pill button */
         .ab-cta-btn {
           display: inline-flex;
           align-items: center;
@@ -166,7 +166,7 @@ export default function AboutSection() {
 
       <section
         ref={ref}
-        className="ab-section ab-dotgrid relative overflow-hidden bg-white py-24 lg:py-32 border-t border-slate-100"
+        className="ab-section ab-dotgrid relative overflow-hidden bg-white pt-0 pb-24 lg:py-32 border-t border-slate-100"
       >
         {/* Soft blue blobs */}
         <div className="absolute top-0 right-0 w-[480px] h-[480px] rounded-full pointer-events-none opacity-20"
@@ -174,7 +174,8 @@ export default function AboutSection() {
         <div className="absolute bottom-0 left-0 w-[320px] h-[320px] rounded-full pointer-events-none opacity-15"
           style={{ background: 'radial-gradient(circle at 60% 60%, #e0f2fe, transparent 70%)' }} />
 
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        {/* ── Same container as EcosystemSection ── */}
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
             {/* ══════════════════════════════
@@ -209,7 +210,7 @@ export default function AboutSection() {
                 SecureAAI Systems delivers next-generation AI-powered security solutions including ANPR, Video Management Systems, Smart Parking, and Intelligent Video Analytics.
               </p>
 
-              {/* Feature grid — big title only, curved border card */}
+              {/* Feature grid */}
               <div className="ab-rev ab-d3 grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
                 {features.map((f, i) => (
                   <div
@@ -222,10 +223,10 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              {/* CTA — matches your pill button screenshot */}
+              {/* CTA */}
               <div className="ab-rev ab-d4">
                 <a href="#" className="ab-cta-btn">
-                   ABOUT US
+                  ABOUT US
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <line x1="5" y1="12" x2="19" y2="12" />
                     <polyline points="12 5 19 12 12 19" />
@@ -259,9 +260,7 @@ export default function AboutSection() {
               {/* Floating Accuracy Card */}
               <div
                 className="absolute top-8 -left-6 bg-white rounded-2xl px-5 py-4"
-                style={{
-                  boxShadow: "0 12px 40px rgba(0,0,0,.12)",
-                }}
+                style={{ boxShadow: "0 12px 40px rgba(0,0,0,.12)" }}
               >
                 <p className="text-xs text-slate-500">Recognition Accuracy</p>
                 <h3 className="text-2xl font-bold" style={{ color: '#0161FE' }}>
@@ -272,9 +271,7 @@ export default function AboutSection() {
               {/* Floating Live Detection Card */}
               <div
                 className="absolute bottom-8 -right-6 bg-white rounded-2xl px-5 py-4"
-                style={{
-                  boxShadow: "0 12px 40px rgba(0,0,0,.12)",
-                }}
+                style={{ boxShadow: "0 12px 40px rgba(0,0,0,.12)" }}
               >
                 <p className="text-xs text-slate-500">Live Detection</p>
                 <div className="flex items-center gap-2">

@@ -120,6 +120,22 @@ export default function WhySection() {
         @keyframes ws-icon-pop { 0% { transform: scale(0.7); opacity: 0; } 60% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
         @keyframes ws-feat-in  { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes ws-scan     { 0% { top: -2px; } 100% { top: 100%; } }
+
+        .ws-dot {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 9999px;
+          background-color: #0161FE;
+          color: #ffffff;
+          border: 2.5px solid rgba(255,255,255,0.85);
+          box-shadow: 0 4px 14px rgba(0,0,0,0.35), 0 0 0 3px rgba(1,97,254,0.22);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          position: relative;
+        }
+        .ws-dot:hover { transform: scale(1.12); }
+        .ws-dot.ws-dot-inactive { width: 38px; height: 38px; }
+        .ws-dot.ws-dot-active   { width: 52px; height: 52px; box-shadow: 0 0 0 5px rgba(1,97,254,0.28), 0 8px 24px rgba(0,0,0,0.4); }
       `}</style>
 
       <section
@@ -129,13 +145,11 @@ export default function WhySection() {
         onMouseLeave={() => setPaused(false)}
         aria-label="Why SecureAAI"
       >
-        {/* Blobs */}
         <div className="absolute -top-24 right-0 w-[420px] h-[420px] rounded-full pointer-events-none opacity-15"
           style={{ background: 'radial-gradient(circle at 40% 40%, #dbeafe, transparent 70%)' }} />
         <div className="absolute bottom-0 -left-24 w-[320px] h-[320px] rounded-full pointer-events-none opacity-10"
           style={{ background: 'radial-gradient(circle at 60% 60%, #e0f2fe, transparent 70%)' }} />
 
-        {/* ── Same container as HeroSection ── */}
         <div className="relative z-10 w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-20">
 
           {/* Header */}
@@ -162,25 +176,30 @@ export default function WhySection() {
             </p>
           </div>
 
-          {/* Mobile card */}
+          {/* Mobile card — above map */}
           <div className="block md:hidden mb-5 ws-rev ws-d3">
             <MobileCard key={`mob-${activeId}`} active={active} />
           </div>
 
-          {/* Map + overlay */}
+          {/* Map — full width, card overlaid inside on desktop */}
           <div className="ws-rev ws-d3 relative w-full">
+            {/* The map box — taller on desktop to fit the card */}
             <div className="relative w-full aspect-square sm:aspect-[4/3] md:aspect-[16/7] overflow-hidden rounded-2xl border border-slate-200 bg-slate-900">
               <img
                 src="/car.jpeg"
                 alt="Smart city visualization"
                 className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
               />
+
               {/* Scan line */}
               <div className="absolute left-0 right-0 h-px z-10 pointer-events-none bg-gradient-to-r from-transparent via-[#5b9fff]/40 to-transparent animate-[ws-scan_4s_linear_infinite]" />
+
               {/* Vignette */}
               <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,0.35)] rounded-2xl" />
-              {/* Right fade */}
-              <div className="hidden md:block absolute inset-y-0 right-0 w-[38%] pointer-events-none bg-gradient-to-l from-slate-950/70 to-transparent" />
+
+              {/* Right dark fade — makes card readable */}
+              <div className="hidden md:block absolute inset-y-0 right-0 w-[36%] pointer-events-none"
+                style={{ background: 'linear-gradient(to left, rgba(2,8,23,0.82) 0%, rgba(2,8,23,0.55) 50%, transparent 100%)' }} />
 
               {/* Hotspots */}
               {hotspots.map(spot => {
@@ -195,28 +214,18 @@ export default function WhySection() {
                     aria-label={`Show ${spot.title}`}
                     aria-pressed={isActive}
                   >
-                    {/* Ping ring */}
                     {isActive && (
-                      <div className="absolute -inset-2 rounded-full bg-[#0161FE]/30 animate-[ws-ping_1.6s_ease-out_infinite] pointer-events-none" />
+                      <div className="absolute -inset-3 rounded-full bg-[#0161FE]/25 animate-[ws-ping_1.6s_ease-out_infinite] pointer-events-none" />
                     )}
-                    {/* Dot — always blue bg, number or icon inside */}
-                    <div
-                      className={`relative flex items-center justify-center rounded-full transition-all duration-300
-                        ${isActive
-                          ? 'w-[42px] h-[42px] sm:w-[50px] sm:h-[50px] text-white border-2 border-white shadow-[0_0_0_4px_rgba(1,97,254,0.25),0_8px_24px_rgba(0,0,0,0.4)]'
-                          : 'w-7 h-7 sm:w-8 sm:h-8 border-2 border-white/80 shadow-md hover:scale-110'
-                        }`}
-                      style={{ background: '#0161FE' }}
-                    >
+                    <div className={`ws-dot ${isActive ? 'ws-dot-active' : 'ws-dot-inactive'}`}>
                       {isActive ? (
-                        <IconComp size={20} strokeWidth={1.75} />
+                        <IconComp size={22} strokeWidth={1.75} />
                       ) : (
-                        <span className="text-white font-bold text-[11px] sm:text-[12px] leading-none">
+                        <span style={{ fontWeight: 700, fontSize: 13, lineHeight: 1 }}>
                           {spot.id}
                         </span>
                       )}
                     </div>
-                    {/* Tooltip (inactive only) */}
                     {!isActive && (
                       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 whitespace-nowrap bg-slate-900 text-white text-[10px] font-semibold px-2.5 py-1 rounded-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150">
                         {spot.title}
@@ -225,18 +234,19 @@ export default function WhySection() {
                   </button>
                 );
               })}
-            </div>
 
-            {/* Info card — desktop overlay */}
-            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-[clamp(260px,28%,320px)] z-30">
-              <InfoCard
-                key={activeId}
-                active={active}
-                progress={progress}
-                hotspots={hotspots}
-                onPick={pick}
-                activeId={activeId}
-              />
+              {/* Info card — overlaid inside image on desktop, right side */}
+              <div className="hidden md:flex absolute right-5 top-1/2 -translate-y-1/2 z-30 w-[272px] lg:w-[300px]">
+                <InfoCard
+                  key={activeId}
+                  active={active}
+                  progress={progress}
+                  hotspots={hotspots}
+                  onPick={pick}
+                  activeId={activeId}
+                />
+              </div>
+
             </div>
           </div>
 
@@ -266,35 +276,36 @@ export default function WhySection() {
 function InfoCard({ active, progress, hotspots, onPick, activeId }) {
   const IconComp = active.Icon;
   return (
-    <div className="relative flex flex-col overflow-hidden bg-white rounded-2xl border border-slate-200 shadow-[0_24px_60px_rgba(0,0,0,0.12)] p-6 pb-5 animate-[ws-card-in_0.4s_ease_both]">
-      <span className="text-[11px] font-semibold tracking-[0.16em] uppercase text-slate-400 block mb-4">
+    <div className="relative flex flex-col w-full overflow-hidden rounded-2xl border border-white/10 shadow-[0_24px_60px_rgba(0,0,0,0.45)] p-5 pb-4 animate-[ws-card-in_0.4s_ease_both]"
+      style={{ background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(12px)' }}>
+      <span className="text-[10px] font-semibold tracking-[0.16em] uppercase text-slate-400 block mb-3">
         0{active.id} / 0{hotspots.length} &nbsp;·&nbsp; Feature
       </span>
       <div
-        className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 animate-[ws-icon-pop_0.45s_ease_both]"
+        className="w-10 h-10 rounded-xl flex items-center justify-center mb-3 animate-[ws-icon-pop_0.45s_ease_both]"
         style={{ background: 'rgba(1,97,254,0.08)', color: '#0161FE', border: '1px solid rgba(1,97,254,0.18)' }}
       >
-        <IconComp size={20} strokeWidth={1.75} />
+        <IconComp size={18} strokeWidth={1.75} />
       </div>
-      <h3 className="text-[17px] font-bold text-slate-900 tracking-tight leading-snug mb-2">
+      <h3 className="text-[15px] font-bold text-slate-900 tracking-tight leading-snug mb-1.5">
         {active.title}
       </h3>
-      <p className="text-[13px] text-slate-500 leading-relaxed mb-5">
+      <p className="text-[12px] text-slate-500 leading-relaxed mb-4">
         {active.desc}
       </p>
-      <div className="flex flex-col gap-2 mb-5">
+      <div className="flex flex-col gap-1.5 mb-4">
         {active.features.map((f, i) => (
           <div
             key={i}
-            className="flex items-center gap-3 rounded-lg border border-slate-100 bg-slate-50 px-3 py-2 animate-[ws-feat-in_0.3s_ease_both]"
+            className="flex items-center gap-2.5 rounded-lg border border-slate-100 bg-slate-50 px-2.5 py-1.5 animate-[ws-feat-in_0.3s_ease_both]"
             style={{ animationDelay: `${(i + 1) * 0.07}s` }}
           >
             <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#0161FE' }} />
-            <span className="text-[12px] font-semibold text-slate-700 leading-none">{f}</span>
+            <span className="text-[11px] font-semibold text-slate-700 leading-none">{f}</span>
           </div>
         ))}
       </div>
-      <div className="flex gap-1.5 pt-4 border-t border-slate-100">
+      <div className="mt-auto flex gap-1.5 pt-3 border-t border-slate-100">
         {hotspots.map(h => {
           const isA = h.id === activeId;
           return (

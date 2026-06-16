@@ -15,9 +15,11 @@ export default function Home() {
     <main>
       <Navbar />
       <HeroSection />
-      <TrustSection />
+        <TrustSection />
+     
       <AboutSection />
       <EcosystemSection />
+     
       <IndustrySection />
       <WhySection />
       <DeploymentSection />

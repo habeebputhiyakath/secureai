@@ -227,42 +227,7 @@ export default function TestimonialSection() {
           </div>
 
           {/* ── Mini previews ── */}
-          <div
-            data-reveal
-            style={{ opacity:0, transform:'translateY(16px)', transition:'opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s' }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5"
-          >
-            {testimonials.map((t, i) => (
-              <button
-                key={i}
-                onClick={() => { setPaused(false); goTo(i, i > activeIndex ? 1 : -1); }}
-                className={`p-4 rounded-xl border text-left transition-all duration-200 group
-                  ${i === activeIndex
-                    ? 'border-slate-900 bg-slate-50'
-                    : 'border-slate-200 bg-white hover:border-slate-400 hover:bg-slate-50'
-                  }`}
-              >
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className={`w-7 h-7 rounded-lg text-[11px] font-bold flex items-center justify-center shrink-0 transition-colors duration-200
-                    ${i === activeIndex ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-slate-200'}`}>
-                    {t.avatar}
-                  </div>
-                  <span className="text-[12px] font-bold text-slate-800 truncate">{t.name}</span>
-                </div>
-                <p className="text-[11px] text-slate-400 truncate">{t.company}</p>
-
-                {/* Active indicator bar */}
-                {i === activeIndex && (
-                  <div className="mt-3 h-px bg-slate-200 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-slate-900 rounded-full"
-                      style={{ width: `${progress}%`, transition: 'none' }}
-                    />
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
+         
 
         </div>
       </section>
