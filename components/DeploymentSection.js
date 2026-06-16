@@ -414,7 +414,7 @@ export default function DeploymentSection() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap mb-1">
                         <p className="dep2-step-title">{s.title}</p>
-                        <span className="dep2-tag">{s.tag}</span>
+                       
                       </div>
                       <p className="dep2-step-label">{s.label}</p>
                     </div>

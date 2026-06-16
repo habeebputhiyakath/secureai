@@ -300,8 +300,8 @@ export default function IndustrySection() {
           font-size: 9.5px; font-weight: 400;
           letter-spacing: 0.08em; text-transform: uppercase;
           padding: 3px 9px; border-radius: 99px;
-          background: rgba(1,97,254,0.08);
-          color: #0161FE;
+          background: #0161FE;
+          color: white;
           border: 1px solid rgba(1,97,254,0.2);
         }
 
