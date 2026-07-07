@@ -1,5 +1,7 @@
 'use client';
 
+import { ShieldCheck, Award, Lock, Camera } from 'lucide-react';
+
 const footerLinks = {
   Solutions: [
     'ANPR Systems',
@@ -23,6 +25,14 @@ const footerLinks = {
     'Terms of Service',
   ],
 };
+
+const certifications = [
+  { label: 'SIRA Approved', icon: ShieldCheck },
+  { label: 'ISO 27001', icon: Award },
+  { label: 'GDPR', icon: Lock },
+  { label: 'ONVIF', icon: Camera },
+];
+
 const socialLinks = [
   {
     name: 'LinkedIn',
@@ -84,67 +94,63 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-22">
 
-        {/* CTA SECTION */}
-       
         {/* MAIN FOOTER */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
 
-        {/* BRAND */}
-<div className="lg:col-span-2">
-  <a href="#" className="flex items-center gap-3 mb-6">
-    <img
-      src="/logo.png" // update with your logo path
-      alt="SecureAAI Logo"
-      className="h-13 w-auto"
-    />
+          {/* BRAND */}
+          <div className="lg:col-span-2">
+            <a href="#" className="flex items-center gap-3 mb-6">
+              <img
+                src="/logo.png" // update with your logo path
+                alt="SecureAAI Logo"
+                className="h-13 w-auto"
+              />
+            </a>
 
-   
-    
-  </a>
+            <p className="text-slate-500 leading-relaxed max-w-md mb-8">
+              Delivering intelligent ANPR, smart parking,
+              video analytics and AI-powered security
+              solutions for enterprises, governments,
+              and smart cities worldwide.
+            </p>
 
-  <p className="text-slate-500 leading-relaxed max-w-md mb-8">
-    Delivering intelligent ANPR, smart parking,
-    video analytics and AI-powered security
-    solutions for enterprises, governments,
-    and smart cities worldwide.
-  </p>
+            {/* CERTIFICATIONS */}
+            <div className="flex flex-wrap gap-3 mb-8">
+              {certifications.map(({ label, icon: Icon }) => (
+                <span
+                  key={label}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold"
+                  style={{
+                    background: 'rgba(1,97,254,.08)',
+                    color: '#0161FE',
+                    border: '1px solid rgba(1,97,254,.15)',
+                  }}
+                >
+                  <Icon size={14} strokeWidth={2.25} />
+                  {label}
+                </span>
+              ))}
+            </div>
 
-  {/* CERTIFICATIONS */}
-  <div className="flex flex-wrap gap-3 mb-8">
-    {['SIRA Approved', 'ISO 27001', 'GDPR', 'ONVIF'].map(item => (
-      <span
-        key={item}
-        className="px-4 py-2 rounded-full text-xs font-semibold"
-        style={{
-          background: 'rgba(1,97,254,.08)',
-          color: '#0161FE',
-          border: '1px solid rgba(1,97,254,.15)',
-        }}
-      >
-        {item}
-      </span>
-    ))}
-  </div>
-
-  {/* SOCIAL */}
-  <div className="flex gap-3">
-    {socialLinks.map((social) => (
-      <a
-        key={social.name}
-        href={social.href}
-        aria-label={social.name}
-        className="
-          w-11 h-11 rounded-2xl flex items-center justify-center
-          bg-white border border-slate-200 text-slate-500
-          hover:bg-[#0161FE] hover:text-white hover:-translate-y-1
-          transition-all duration-300 shadow-sm hover:shadow-lg
-        "
-      >
-        {social.icon}
-      </a>
-    ))}
-  </div>
-</div>
+            {/* SOCIAL */}
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  aria-label={social.name}
+                  className="
+                    w-11 h-11 rounded-2xl flex items-center justify-center
+                    bg-white border border-slate-200 text-slate-500
+                    hover:bg-[#0161FE] hover:text-white hover:-translate-y-1
+                    transition-all duration-300 shadow-sm hover:shadow-lg
+                  "
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
 
           {/* LINKS */}
           {Object.entries(footerLinks).map(([title, links]) => (

@@ -6,15 +6,13 @@ const NAV_ITEMS = [
   { label: 'Solutions', type: 'mega' },
   {
     label: 'Success Stories', type: 'dropdown',
-    // items: ['Case Studies', 'Smart Cities', 'Transportation', 'Enterprise Security', 'Government Projects'],
   },
   {
-    label: 'Support', type: 'dropdown',
-    // items: ['Support Center', 'Documentation', 'Downloads', 'Contact Support', 'Training'],
+    label: 'Support', type: 'link', href: '/support'
   },
   {
     label: 'Partners', type: 'dropdown',
-    // items: ['Technology Partners', 'System Integrators', 'Become a Partner'],
+    items: ['Technology Partner Program', 'Channel Partner Program'],
   },
   {
     label: 'Company', type: 'dropdown',
@@ -25,52 +23,56 @@ const NAV_ITEMS = [
 /* ─── PRODUCTS MEGA ─────────────────────────────────────────────── */
 function ProductsMega() {
   return (
-    <div className="mega-panel" style={{ width: 860 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1.1fr', gap: 0 }}>
-        {/* Software */}
-        <div className="mega-col">
-          <div className="mega-col-head">Software</div>
-          <MegaItem title="Overview" desc="Platform overview & architecture" />
-          <MegaItem title="SI.PRO" desc="ANPR & Plate Recognition" badge="SIRA Approved" badgeColor="#0161FE" badgeBg="#eaf1ff" />
-          <MegaItem title="ParkS" desc="Smart Parking Management" badge="New" badgeColor="#15803d" badgeBg="#f0fdf4" />
-          <MegaItem title="SVMS" desc="Enterprise Video Management" />
-        </div>
-        {/* Hardware */}
-        <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
-          <div className="mega-col-head">Hardware</div>
-          <MegaItem title="Intelligent Cameras" desc="Edge-AI ANPR & Surveillance" />
-          <MegaItem title="Processing Units" desc="On-premise AI Inference Servers" />
-          <MegaItem title="Accessories" desc="Mounts, Housing & Cabling" />
-        </div>
-        {/* Services */}
-        <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
-          <div className="mega-col-head">Services</div>
-          <MegaItem title="SICare" desc="Annual Maintenance & Support" />
-          <MegaItem title="Professional Services" desc="Install, Configure & Commission" />
-          <MegaItem title="Contact Support" desc="24/7 Ticket Support Portal" />
-        </div>
-        {/* Featured */}
-        <div style={{ padding: '20px 20px 20px 16px', borderLeft: '1px solid #f1f5f9' }}>
-          <div className="mega-col-head">Featured</div>
-          <div style={{
-            background: 'linear-gradient(135deg, #0042b3 0%, #0161FE 100%)',
-            borderRadius: 12, padding: '16px', marginTop: 4,
-          }}>
-            <span style={{
-              display: 'inline-block', background: 'rgba(255,255,255,0.2)',
-              color: '#fff', fontSize: '0.62rem', fontWeight: 700,
-              letterSpacing: '0.08em', textTransform: 'uppercase',
-              padding: '3px 10px', borderRadius: 100, marginBottom: 10,
-            }}>Latest Release</span>
-            <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', marginBottom: 6 }}>SI.PRO ANPR v3.5</div>
-            <p style={{ color: 'rgba(219,234,254,0.85)', fontSize: '0.78rem', lineHeight: 1.6, marginBottom: 12 }}>
-              New AI engine, 98.7% accuracy, 60+ plate formats, full edge processing.
-            </p>
-            <a href="#" style={{
-              color: '#fff', fontSize: '0.78rem', fontWeight: 600,
-              display: 'inline-flex', alignItems: 'center', gap: 5,
-              textDecoration: 'none',
-            }}>See What's New →</a>
+    <div className="mega-panel">
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1.1fr', gap: 0 }}>
+          {/* Software */}
+          <div className="mega-col">
+            <div className="mega-col-head">Software</div>
+            <MegaItem title="Overview" desc="Platform overview & architecture" href="/products/overview" />
+            <MegaItem title="SI.PRO" desc="ANPR & Plate Recognition" href="/products/si.pro"  badge="SIRA Approved" badgeColor="#0161FE" badgeBg="#eaf1ff" />
+
+            <MegaItem title="ParkSi" desc="Smart Parking Management" href="/products/parksi" badge="New" badgeColor="#15803d" badgeBg="#f0fdf4" />
+            <MegaItem title="SiVMS" desc="Enterprise Video Management" href="/products/sivms" />
+            <MegaItem title="TrackSi" desc="GPS Fleet Tracking" href="/products/tracksi" />
+          </div>
+          {/* Hardware */}
+          <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
+            <div className="mega-col-head">Hardware</div>
+            <MegaItem title="Intelligent Cameras" desc="Edge-AI ANPR & Surveillance" href="/products/cameras" />
+            <MegaItem title="Processing Units" desc="On-premise AI Inference Servers" href="/products/processing" />
+            <MegaItem title="Accessories" desc="Mounts, Housing & Cabling" href="/products/accessories" />
+          </div>
+          {/* Services */}
+          <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
+            <div className="mega-col-head">Services</div>
+            <MegaItem title="SICare Support" desc="Maintenance & Technical Services" href="/products/sicare" />
+            <MegaItem title="Professional Services" desc="Install, Configure & Commission" href="/products/professional" />
+            <MegaItem title="Contact Support" desc="24/7 Ticket Support Portal" />
+          </div>
+          {/* Featured */}
+          <div style={{ padding: '20px 20px 20px 16px', borderLeft: '1px solid #f1f5f9' }}>
+            <div className="mega-col-head">Featured</div>
+            <div style={{
+              background: 'linear-gradient(135deg, #0042b3 0%, #0161FE 100%)',
+              borderRadius: 12, padding: '16px', marginTop: 4,
+            }}>
+              <span style={{
+                display: 'inline-block', background: 'rgba(255,255,255,0.2)',
+                color: '#fff', fontSize: '0.62rem', fontWeight: 700,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                padding: '3px 10px', borderRadius: 100, marginBottom: 10,
+              }}>Latest Release</span>
+              <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', marginBottom: 6 }}>SI.PRO ANPR v3.5</div>
+              <p style={{ color: 'rgba(219,234,254,0.85)', fontSize: '0.78rem', lineHeight: 1.6, marginBottom: 12 }}>
+                New AI engine, 98.7% accuracy, 60+ plate formats, full edge processing.
+              </p>
+              <a href="#" style={{
+                color: '#fff', fontSize: '0.78rem', fontWeight: 600,
+                display: 'inline-flex', alignItems: 'center', gap: 5,
+                textDecoration: 'none',
+              }}>See What's New →</a>
+            </div>
           </div>
         </div>
       </div>
@@ -81,26 +83,35 @@ function ProductsMega() {
 /* ─── SOLUTIONS MEGA ─────────────────────────────────────────────── */
 function SolutionsMega() {
   const industries = ['Airports', 'Government', 'Smart Cities', 'Logistics', 'Retail', 'Healthcare', 'Education', 'Critical Infrastructure'];
-  const capabilities = ['ANPR', 'VMS', 'Smart Parking', 'Access Control', 'AI Analytics', 'Intelligent Surveillance'];
+  const capabilities = [
+    { label: 'ANPR', href: '/solutions/anpr' },
+    { label: 'VMS', href: '/solutions/vms' },
+    { label: 'Smart Parking', href: '/solutions/parking' },
+    { label: 'Access Control', href: '#' },
+    { label: 'AI Analytics', href: '#' },
+    { label: 'Intelligent Surveillance', href: '#' }
+  ];
   return (
-    <div className="mega-panel" style={{ width: 480 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
-        <div className="mega-col">
-          <div className="mega-col-head">Industries</div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-            {industries.map(i => (
-              <a key={i} href="#" className="mega-link">{i}</a>
+    <div className="mega-panel">
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, maxWidth: 520 }}>
+          <div className="mega-col">
+            <div className="mega-col-head">Industries</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+              {industries.map(i => (
+                <a key={i} href="#" className="mega-link">{i}</a>
+              ))}
+            </div>
+          </div>
+          <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
+            <div className="mega-col-head">Capabilities</div>
+            {capabilities.map(c => (
+              <a key={c.label} href={c.href} className="mega-link" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0161FE', flexShrink: 0 }} />
+                {c.label}
+              </a>
             ))}
           </div>
-        </div>
-        <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
-          <div className="mega-col-head">Capabilities</div>
-          {capabilities.map(c => (
-            <a key={c} href="#" className="mega-link" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0161FE', flexShrink: 0 }} />
-              {c}
-            </a>
-          ))}
         </div>
       </div>
     </div>
@@ -109,19 +120,30 @@ function SolutionsMega() {
 
 /* ─── DROPDOWN ───────────────────────────────────────────────────── */
 function DropdownMenu({ items }) {
+  const getHref = (item) => {
+    if (item === 'About Us') return '/about';
+    if (item === 'blog') return '/blog';
+    if (item === 'trust center') return '/trust';
+    if (item === 'Contact') return '/contact';
+    if (item === 'Technology Partner Program') return '/partner/technology-partner-program';
+    if (item === 'Channel Partner Program') return '/partner/channel-partner-program';
+    return '#';
+  };
   return (
     <div className="dropdown-panel">
       {items?.map(item => (
-        <a key={item} href="#" className="dropdown-item">{item}</a>
+        <a key={item} href={getHref(item)} className="dropdown-item" style={{ textTransform: item === 'blog' ? 'capitalize' : 'none' }}>
+          {item === 'blog' ? 'Blog' : item}
+        </a>
       ))}
     </div>
   );
 }
 
 /* ─── MEGA ITEM ──────────────────────────────────────────────────── */
-function MegaItem({ title, desc, badge, badgeColor, badgeBg }) {
+function MegaItem({ title, desc, badge, badgeColor, badgeBg, href = '#' }) {
   return (
-    <a href="#" className="mega-item">
+    <a href={href} className="mega-item">
       <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 2 }}>
         <span className="mega-item-title">{title}</span>
         {badge && (
@@ -166,20 +188,22 @@ export default function Navbar() {
 
         .saai-nav * { box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
 
-        /* ── MEGA / DROPDOWN PANELS ── */
+        /* ── MEGA PANEL — full width ── */
         .mega-panel {
-          position: absolute;
-          top: calc(100% + 8px);
-          left: 50%;
-          transform: translateX(-50%);
+          position: fixed;
+          top: 72px;
+          left: 0;
+          right: 0;
+          width: 100%;
           background: #fff;
-          border: 1px solid #e8edf4;
-          border-radius: 18px;
+          border-top: 1px solid #e8edf4;
+          border-bottom: 1px solid #e8edf4;
           box-shadow: 0 12px 40px rgba(1,40,130,0.10), 0 2px 8px rgba(15,23,42,0.06);
-          overflow: hidden;
           z-index: 200;
           animation: navFadeIn 0.18s ease;
         }
+
+        /* ── DROPDOWN PANEL — stays anchored to trigger ── */
         .dropdown-panel {
           position: absolute;
           top: calc(100% + 8px);
@@ -194,7 +218,16 @@ export default function Navbar() {
           z-index: 200;
           animation: navFadeIn 0.18s ease;
         }
+
         @keyframes navFadeIn {
+          from { opacity: 0; transform: translateY(-6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        /* dropdown still uses translateX trick so keep it separate */
+        .dropdown-panel {
+          animation: dropFadeIn 0.18s ease;
+        }
+        @keyframes dropFadeIn {
           from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
           to   { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
@@ -235,30 +268,23 @@ export default function Navbar() {
 
         /* ── NAV BUTTON ── */
         .nav-btn {
-          display: flex; align-items: center; gap: 4px;
-          padding: 8px 12px; border-radius: 100px;
-          font-size: 0.8rem; font-weight: 300; color: #374151;
-          background: none; border: none; cursor: pointer;
-          transition: all 0.15s ease; white-space: nowrap;
-          font-family: 'DM Sans', sans-serif;
           display: inline-flex;
-  align-items: center;
-  gap: 7px;
-
-  backdrop-filter: blur(4px);
-
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
-
-  padding: 6px 14px;
-
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-
-  
-
+          align-items: center;
+          gap: 7px;
+          backdrop-filter: blur(4px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 9999px;
+          padding: 6px 14px;
+          font-size: 0.82rem;
+          font-weight: 400;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #374151;
+          background: none;
+          cursor: pointer;
+          transition: all 0.15s ease;
+          white-space: nowrap;
+          font-family: 'DM Sans', sans-serif;
         }
         .nav-btn:hover, .nav-btn.active { background: #eaf1ff; color: #0161FE; }
         .nav-btn svg { transition: transform 0.2s ease; flex-shrink: 0; }
@@ -268,7 +294,7 @@ export default function Navbar() {
         .nav-cta {
           display: inline-flex; align-items: center; gap: 8px;
           background: #0161FE; color: #fff;
-          font-family: 'DM Sans', sans-serif ,; font-weight: 400; font-size: 0.82rem;
+          font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 0.82rem;
           padding: 10px 22px; border-radius: 100px; text-decoration: none;
           border: none; cursor: pointer; transition: all 0.18s ease;
           white-space: nowrap;
@@ -342,12 +368,6 @@ export default function Navbar() {
           .nav-hamburger { display: none !important; }
           .mobile-menu { display: none !important; }
         }
-
-        /* prevent mega panel clipping on smaller desktops */
-        @media (max-width: 1200px) {
-          .mega-products { left: 0 !important; transform: none !important; }
-          .mega-solutions { left: 0 !important; transform: none !important; }
-        }
       `}</style>
 
       <header
@@ -364,28 +384,27 @@ export default function Navbar() {
         <nav style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
 
-           {/* ── LOGO ── */}
-<a
-  href="#"
-  style={{
-    display: "flex",
-    alignItems: "center",
-    textDecoration: "none",
-    flexShrink: 0,
-  }}
->
-{/* yuu */}
-  
-  <img
-    src="/logo.png" // replace with your logo path
-    alt="SecureAAI Logo"
-    style={{
-      height: "30px",
-      width: "auto",
-      objectFit: "contain",
-    }}
-  />
-</a>
+            {/* ── LOGO ── */}
+            <a
+              href="#"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                textDecoration: 'none',
+                flexShrink: 0,
+              }}
+            >
+              <img
+                src="/logo.png"
+                alt="SecureAAI Logo"
+                style={{
+                  height: '30px',
+                  width: 'auto',
+                  objectFit: 'contain',
+                }}
+              />
+            </a>
+
             {/* ── DESKTOP NAV ── */}
             <div className="nav-desktop" style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               {NAV_ITEMS.map((item) => (
@@ -395,14 +414,20 @@ export default function Navbar() {
                   onMouseEnter={() => handleMouseEnter(item.label)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button className={`nav-btn${hovered === item.label ? ' active' : ''}`}>
-                    {item.label}
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
+                  {item.href ? (
+                    <a href={item.href} className="nav-btn" style={{ textDecoration: 'none' }}>
+                      {item.label}
+                    </a>
+                  ) : (
+                    <button className={`nav-btn${hovered === item.label ? ' active' : ''}`}>
+                      {item.label}
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+                  )}
 
-                  {hovered === item.label && (
+                  {hovered === item.label && !item.href && (
                     <div onMouseEnter={() => handleMouseEnter(item.label)} onMouseLeave={handleMouseLeave}>
                       {item.label === 'Products' && <ProductsMega />}
                       {item.label === 'Solutions' && <SolutionsMega />}
@@ -415,7 +440,6 @@ export default function Navbar() {
 
             {/* ── DESKTOP RIGHT ── */}
             <div className="nav-desktop-right" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            
               <button className="nav-lang-btn">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
@@ -444,38 +468,65 @@ export default function Navbar() {
           <div className="mobile-menu">
             {NAV_ITEMS.map((item) => (
               <div key={item.label}>
-                <button
-                  className="mobile-nav-btn"
-                  onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
-                >
-                  {item.label}
-                  <svg
-                    style={{ transition: 'transform 0.2s ease', transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', flexShrink: 0 }}
-                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                {item.href ? (
+                  <a href={item.href} className="mobile-nav-btn" style={{ textDecoration: 'none' }}>
+                    {item.label}
+                  </a>
+                ) : (
+                  <button
+                    className="mobile-nav-btn"
+                    onClick={() => setMobileExpanded(mobileExpanded === item.label ? null : item.label)}
                   >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </button>
+                    {item.label}
+                    <svg
+                      style={{ transition: 'transform 0.2s ease', transform: mobileExpanded === item.label ? 'rotate(180deg)' : 'none', flexShrink: 0 }}
+                      width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </button>
+                )}
 
-                {mobileExpanded === item.label && (
+                {mobileExpanded === item.label && !item.href && (
                   <div>
                     {item.label === 'Products' && (
                       <>
-                        {['Overview', 'SI.PRO — ANPR', 'ParkS — Smart Parking', 'SVMS — Video Mgmt', 'Intelligent Cameras', 'Processing Units', 'SICare Support', 'Professional Services'].map(s => (
-                          <a key={s} href="#" className="mobile-sub-link">{s}</a>
+                        {[
+                          { label: 'Overview', href: '/products/overview' },
+                          { label: 'SI.PRO — ANPR', href: '/products/si.pro' },
+                          { label: 'ParkSi — Smart Parking', href: '/products/parksi' },
+                          { label: 'SiVMS — Video Mgmt', href: '/products/sivms' },
+                          { label: 'TrackSi — GPS Tracking', href: '/products/tracksi' },
+                          { label: 'Intelligent Cameras', href: '/products/cameras' },
+                          { label: 'Processing Units', href: '/products/processing' },
+                          { label: 'Accessories', href: '/products/accessories' },
+                          { label: 'SICare Support', href: '/products/sicare' },
+                          { label: 'Professional Services', href: '/products/professional' },
+                        ].map(s => (
+                          <a key={s.label} href={s.href} className="mobile-sub-link">{s.label}</a>
                         ))}
                       </>
                     )}
                     {item.label === 'Solutions' && (
                       <>
-                        {['Airports', 'Government', 'Smart Cities', 'Logistics', 'ANPR', 'VMS', 'Smart Parking', 'AI Analytics'].map(s => (
-                          <a key={s} href="#" className="mobile-sub-link">{s}</a>
+                        {[
+                          { label: 'Airports', href: '#' },
+                          { label: 'Government', href: '#' },
+                          { label: 'Smart Cities', href: '#' },
+                          { label: 'Logistics', href: '#' },
+                          { label: 'ANPR', href: '/solutions/anpr' },
+                          { label: 'VMS', href: '/solutions/vms' },
+                          { label: 'Smart Parking', href: '/solutions/parking' },
+                          { label: 'AI Analytics', href: '#' }
+                        ].map(s => (
+                          <a key={s.label} href={s.href} className="mobile-sub-link">{s.label}</a>
                         ))}
                       </>
                     )}
-                    {item.items && item.type === 'dropdown' && item.items.map(sub => (
-                      <a key={sub} href="#" className="mobile-sub-link">{sub}</a>
-                    ))}
+                    {item.items && item.type === 'dropdown' && item.items.map(sub => {
+                      const href = sub === 'About Us' ? '/about' : sub === 'blog' ? '/blog' : sub === 'Contact' ? '/contact' : sub === 'trust center' ? '/trust' : sub === 'Technology Partner Program' ? '/partner/technology-partner-program' : sub === 'Channel Partner Program' ? '/partner/channel-partner-program' : '#';
+                      return <a key={sub} href={href} className="mobile-sub-link">{sub === 'blog' ? 'Blog' : sub === 'trust center' ? 'Trust Center' : sub}</a>;
+                    })}
                   </div>
                 )}
               </div>

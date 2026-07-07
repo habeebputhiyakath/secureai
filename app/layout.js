@@ -1,5 +1,7 @@
 import { Inter, Syne, JetBrains_Mono, Barlow_Condensed, Poppins } from 'next/font/google';
 import './globals.css';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 // Body / UI font
 const inter = Inter({
@@ -84,7 +86,9 @@ export default function RootLayout({ children }) {
       `}
     >
       <body className="antialiased">
+        <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

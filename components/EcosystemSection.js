@@ -313,7 +313,7 @@ export default function EcosystemSection() {
                 </div>
                 <div
                   className="hidden sm:flex w-8 h-8 rounded-full border-[1.5px] border-slate-200 items-center justify-center text-slate-400 shrink-0 group-hover:translate-x-[2px] transition-all duration-200"
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#0161FE'; e.currentTarget.style.color = '#0161FE'; }}
+                  onMouseEnater={(e) => { e.currentTarget.style.borderColor = '#0161FE'; e.currentTarget.style.color = '#0161FE'; }}
                   onMouseLeave={(e) => { e.currentTarget.style.borderColor = ''; e.currentTarget.style.color = ''; }}
                 >
                   <ArrowIcon />
