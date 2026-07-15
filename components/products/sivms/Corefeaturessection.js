@@ -6,49 +6,29 @@ const features = [
   {
     title: 'Live Video Monitoring',
     desc: 'Monitor multiple sites from a single interface. View hundreds of camera feeds simultaneously with PTZ control, instant playback switching, and multi-screen layout customisation.',
-    img: 'https://wewatchlive.ca/wp-content/uploads/2024/01/live-video-monitoring-new.jpg',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdIxKt2pWLCNsB9PMV3QC67xjVJ4o7dfpMgcpoHvwUgQ&s=10',
     fallbackGradient: 'linear-gradient(135deg, #0f2a5e 0%, #0161FE 100%)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
     stat: 'Up to 10,000+ channels',
   },
   {
     title: 'Recording & Playback',
     desc: 'Secure storage and evidence management. Continuous, scheduled, and event-triggered recording with tamper-proof audit trails and frame-accurate evidence retrieval.',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0f_Vv3GqhXYZbKb1jksoQ4lfsTSJ_jrzcoA&s',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvld98u693sVWRII4cIxQl74pn9I6wATwKtxECs0rTrQ&s=10',
     fallbackGradient: 'linear-gradient(135deg, #052a1a 0%, #059669 100%)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" fill="white" stroke="none" />
-      </svg>
-    ),
     stat: '4PB+ storage capacity',
   },
   {
     title: 'Event Management',
     desc: 'Receive intelligent alerts and notifications. AI-powered anomaly detection triggers instant escalations — perimeter breaches, loitering, crowd density, and more.',
-    img: 'https://www.shutterstock.com/shutterstock/videos/4032856693/thumb/1.jpg?ip=x480',
+    img: 'https://aaftonline.com/blog/wp-content/uploads/2023/03/Untitled-design-23.jpg',
     fallbackGradient: 'linear-gradient(135deg, #3b0a0a 0%, #dc2626 100%)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
-      </svg>
-    ),
     stat: '<500ms alert latency',
   },
   {
     title: 'AI Video Analytics',
     desc: 'Transform video into actionable intelligence. Facial recognition, ANPR, object classification, behavioural analysis, and crowd heatmaps — all processed at the edge.',
-    img: 'https://static.wixstatic.com/media/f2078f_8cf07e77149947a3af1145788ba08374~mv2.webp',
+    img: 'https://www.hdatasystems.com/assets/uploads/banner/1639621998.jpg',
     fallbackGradient: 'linear-gradient(135deg, #1a0a3b 0%, #7c3aed 100%)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
-      </svg>
-    ),
     stat: '98.7% ANPR accuracy',
   },
   {
@@ -56,11 +36,6 @@ const features = [
     desc: 'Manage distributed facilities through one platform. Single pane of glass control across unlimited geographic locations, with no VPN complexity.',
     img: 'https://fiixsoftware.com/wp-content/uploads/2024/08/multi-site-graphic@2x.png',
     fallbackGradient: 'linear-gradient(135deg, #0a1f3b 0%, #0ea5e9 100%)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
     stat: '15+ countries deployed',
   },
 ];
@@ -175,7 +150,7 @@ export default function SivmsCoreFeaturesSection() {
                   className="svcf-card bg-white rounded-2xl overflow-hidden border border-slate-200"
                   style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.05)' }}
                 >
-                  {/* Image / visual area */}
+                  {/* Image area */}
                   <div className="h-44 overflow-hidden relative" style={{ background: f.fallbackGradient }}>
                     <img
                       src={f.img}
@@ -184,14 +159,6 @@ export default function SivmsCoreFeaturesSection() {
                       onLoad={e => e.target.classList.remove('opacity-0')}
                       onError={e => e.target.style.display = 'none'}
                     />
-                    {/* Icon overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                        style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(4px)' }}
-                      >
-                        {f.icon}
-                      </div>
-                    </div>
                     {/* Stat badge on image */}
                     <div className="absolute bottom-3 left-3">
                       <span className="text-[10px] font-bold text-white px-3 py-1 rounded-full"
@@ -237,13 +204,6 @@ export default function SivmsCoreFeaturesSection() {
                     onLoad={e => e.target.classList.remove('opacity-0')}
                     onError={e => e.target.style.display = 'none'}
                   />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-3xl flex items-center justify-center"
-                      style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(4px)' }}
-                    >
-                      {features[4].icon}
-                    </div>
-                  </div>
                 </div>
                 {/* Right — text */}
                 <div className="p-8 lg:p-10 flex flex-col justify-center">

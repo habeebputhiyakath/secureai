@@ -1,17 +1,25 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const quickLinks = [
-  { label: 'ANPR Cameras',           href: '#anpr' },
-  { label: 'Traffic Monitoring',     href: '#traffic' },
-  { label: 'Parking Management',     href: '#parking' },
-  { label: 'AI Analytics',           href: '#ai' },
-  { label: 'Multi-Sensor',           href: '#multisensor' },
+const specBullets = [
+  '4-Sensor Independent Coverage',
+  'Motorized Pan · Tilt · Rotation per Lens',
+  '360° IR Illumination — up to 30m',
+  'Dual 1TB SD Card Local Storage',
+];
+
+const tabs = [
+  { id: 'overview',   label: 'Overview' },
+  { id: 'categories', label: 'Camera Types' },
+  { id: 'features',   label: 'Key Features' },
+  { id: 'specs',      label: 'Specs & Mounting' },
 ];
 
 export default function CamerasHeroSection() {
   const ref = useRef(null);
+  const [activeTab, setActiveTab] = useState('overview');
+  const [tabSticky, setTabSticky] = useState(false);
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -21,7 +29,10 @@ export default function CamerasHeroSection() {
       { threshold: 0.06 }
     );
     ref.current?.querySelectorAll('.ch-rev').forEach(el => io.observe(el));
-    return () => io.disconnect();
+
+    const onScroll = () => setTabSticky(window.scrollY > 520);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => { io.disconnect(); window.removeEventListener('scroll', onScroll); };
   }, []);
 
   return (
@@ -35,7 +46,7 @@ export default function CamerasHeroSection() {
         .ch-rev.ch-vis { opacity: 1; transform: none; }
         .ch-d0{transition-delay:0s}   .ch-d1{transition-delay:0.1s}
         .ch-d2{transition-delay:0.2s} .ch-d3{transition-delay:0.3s}
-        .ch-d4{transition-delay:0.4s}
+        .ch-d4{transition-delay:0.4s} .ch-d5{transition-delay:0.5s}
 
         @keyframes chScan { 0%{top:0%} 100%{top:100%} }
         .ch-scan {
@@ -46,21 +57,16 @@ export default function CamerasHeroSection() {
         @keyframes chPulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
         .ch-pulse { animation: chPulse 1.5s ease-in-out infinite; }
 
-        .ch-quicklink {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 9px 18px; border-radius: 9999px;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.14);
-          color: #cbd5e1; font-size: 0.75rem; font-weight: 600;
-          text-decoration: none;
-          transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
-          white-space: nowrap;
+        .ch-spec-row {
+          display: flex; align-items: center; gap: 10px;
+          font-size: 0.82rem; color: #cbd5e1; font-weight: 500;
         }
-        .ch-quicklink:hover {
-          background: rgba(1,97,254,0.25);
-          border-color: rgba(1,97,254,0.5);
-          color: #fff; transform: translateY(-2px);
+        .ch-spec-check {
+          width: 18px; height: 18px; border-radius: 9999px; flex-shrink: 0;
+          background: rgba(1,97,254,0.18); border: 1px solid rgba(56,189,248,0.4);
+          display: flex; align-items: center; justify-content: center;
         }
+
         .ch-btn-primary {
           display: inline-flex; align-items: center; gap: 9px;
           font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
@@ -85,12 +91,71 @@ export default function CamerasHeroSection() {
           cursor: pointer; text-decoration: none;
         }
         .ch-btn-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+        /* Quad-split signature visual */
+        .ch-quad {
+          position: relative; width: 100%; aspect-ratio: 1/1; max-width: 460px;
+          border-radius: 24px; overflow: hidden;
+          background: #020c1b;
+          border: 1px solid rgba(56,189,248,0.25);
+          box-shadow: 0 30px 90px rgba(1,10,30,0.55), 0 0 0 1px rgba(255,255,255,0.04) inset;
+        }
+        .ch-quad-grid {
+          position: absolute; inset: 0;
+          display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+          gap: 2px; background: rgba(56,189,248,0.18);
+        }
+        .ch-quad-cell {
+          position: relative; overflow: hidden;
+          display: flex; align-items: flex-end;
+        }
+        .ch-quad-cell::after {
+          content: ''; position: absolute; inset: 0;
+          background: radial-gradient(circle at 50% 30%, rgba(56,189,248,0.16), transparent 65%);
+        }
+        .ch-quad-label {
+          position: relative; z-index: 2; font-family: 'JetBrains Mono', monospace;
+          font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em;
+          color: #7dd3fc; padding: 8px 10px; text-transform: uppercase;
+        }
+        .ch-quad-rec {
+          position: absolute; top: 8px; right: 10px; z-index: 2;
+          display: flex; align-items: center; gap: 4px;
+          font-family: 'JetBrains Mono', monospace; font-size: 0.5rem;
+          color: #f87171; font-weight: 700; letter-spacing: 0.06em;
+        }
+        .ch-quad-dot { width: 5px; height: 5px; border-radius: 9999px; background: #f87171; }
+        .ch-quad-center {
+          position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+          width: 46px; height: 46px; border-radius: 9999px; z-index: 3;
+          background: rgba(2,12,27,0.9); border: 1px solid rgba(1,97,254,0.5);
+          display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Sticky tab nav */
+        .ch-tabnav {
+          position: sticky; top: 0; z-index: 40;
+          background: rgba(2,12,27,0.92); backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          transition: box-shadow 0.25s;
+        }
+        .ch-tabnav.ch-tabnav-shadow { box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+        .ch-tab {
+          font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+          text-transform: uppercase; color: #94a3b8;
+          padding: 16px 4px; border-bottom: 2px solid transparent;
+          cursor: pointer; background: none; border-top: none; border-left: none; border-right: none;
+          transition: color 0.2s, border-color 0.2s;
+          white-space: nowrap;
+        }
+        .ch-tab:hover { color: #cbd5e1; }
+        .ch-tab.ch-tab-active { color: #fff; border-bottom-color: #0161FE; }
       `}</style>
 
       <section
         ref={ref}
-        className="relative overflow-hidden flex items-center min-h-screen"
-        style={{ background: 'linear-gradient(150deg, #020c1b 0%, #051428 45%, #081d3d 100%)' }}
+        className="relative overflow-hidden border-b p-10  border-slate-800"
+        style={{ background: 'linear-gradient(160deg, #020c1b 0%, #05152f 55%, #071b3d 100%)' }}
       >
         {/* Dot grid */}
         <div className="absolute inset-0 pointer-events-none"
@@ -106,85 +171,109 @@ export default function CamerasHeroSection() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle at 40% 65%, rgba(14,165,233,0.10), transparent 65%)' }} />
 
-        {/* Camera lens graphic — decorative */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex items-center justify-center opacity-[0.06] pointer-events-none">
-          <div className="w-[520px] h-[520px] rounded-full border border-white" />
-          <div className="absolute w-[380px] h-[380px] rounded-full border border-white" />
-          <div className="absolute w-[240px] h-[240px] rounded-full border border-white" />
-          <div className="absolute w-[120px] h-[120px] rounded-full border border-white" />
-          <div className="absolute w-[50px] h-[50px] rounded-full bg-white opacity-40" />
-        </div>
+        <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10 pt-28 lg:pt-36 pb-20 lg:pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-14 items-center">
 
-        <div className="relative w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-36 lg:py-44">
-          <div className="max-w-3xl">
+            {/* Left: copy */}
+            <div>
+              <div className="ch-rev ch-d0 mb-7 mt-10">
+                <span
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
+                  style={{
+                    background: 'rgba(14,165,233,0.12)',
+                    border: '1px solid rgba(14,165,233,0.3)',
+                    color: '#7dd3fc',
+                    fontSize: '0.68rem', fontWeight: 700,
+                    letterSpacing: '0.12em', textTransform: 'uppercase',
+                  }}
+                >
+                  <span className="ch-pulse w-1.5 h-1.5 rounded-full bg-sky-400" />
+                  SecureAAI Hardware — Intelligent Cameras
+                </span>
+              </div>
 
-            {/* Eyebrow */}
-            <div className="ch-rev ch-d0 mb-7">
-              <span
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
-                style={{
-                  background: 'rgba(14,165,233,0.12)',
-                  border: '1px solid rgba(14,165,233,0.3)',
-                  color: '#7dd3fc',
-                  fontSize: '0.68rem', fontWeight: 700,
-                  letterSpacing: '0.12em', textTransform: 'uppercase',
-                }}
+              <h1
+                className="ch-rev ch-d1 font-extrabold tracking-tight text-white mb-4"
+                style={{ fontSize: 'clamp(2.6rem, 5vw, 4.2rem)', lineHeight: 1.05 }}
               >
-                <span className="ch-pulse w-1.5 h-1.5 rounded-full bg-sky-400" />
-                SecureAAI Hardware — Intelligent Cameras
-              </span>
-            </div>
+                One Camera.Every Angle Covered.
+              </h1>
+              <p className="ch-rev ch-d2 mb-3"
+                style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 700, color: '#7dd3fc', lineHeight: 1.3 }}
+              >
+                AI-Powered Vision for Modern Security
+              </p>
+              <p className="ch-rev ch-d3 text-slate-400 text-base sm:text-lg leading-relaxed mb-9 max-w-xl">
+                SecureAAI intelligent cameras combine independent multi-sensor imaging with edge AI to replace multiple fixed units with one purpose-engineered device — across surveillance, traffic, and smart parking deployments.
+              </p>
 
-            {/* Main heading */}
-            <h1
-              className="ch-rev ch-d1 font-extrabold tracking-tight text-white mb-4"
-              style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.5rem)', lineHeight: 1.05 }}
-            >
-              Intelligent Cameras
-            </h1>
-            <p className="ch-rev ch-d2 mb-3"
-              style={{ fontSize: 'clamp(1.15rem, 2.2vw, 1.5rem)', fontWeight: 700, color: '#7dd3fc', lineHeight: 1.3 }}
-            >
-              AI-Powered Vision for Modern Security
-            </p>
-            <p className="ch-rev ch-d3 text-slate-400 text-base sm:text-lg leading-relaxed mb-12 max-w-2xl">
-              SecureAAI intelligent cameras combine advanced imaging technologies with AI capabilities to provide superior performance across surveillance, traffic monitoring, and smart parking applications.
-            </p>
+            
 
-            {/* CTAs */}
-            <div className="ch-rev ch-d4 flex flex-wrap gap-4 mb-14">
-              <a href="#categories" className="ch-btn-primary">
-                VIEW ALL CAMERAS
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-                </svg>
-              </a>
-              <a href="#" className="ch-btn-secondary">REQUEST QUOTE</a>
-            </div>
-
-            {/* Quick-jump category chips */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.75, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap gap-2"
-            >
-              {quickLinks.map((q, i) => (
-                <a key={i} href={q.href} className="ch-quicklink">
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-wrap gap-4"
+              >
+                <a href="#specs" className="ch-btn-primary">
+                  VIEW SPECIFICATIONS
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                   </svg>
-                  {q.label}
                 </a>
-              ))}
+                <a href="#categories" className="ch-btn-secondary">EXPLORE CAMERA TYPES</a>
+              </motion.div>
+            </div>
+
+            {/* Right: quad-split signature visual */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="justify-self-center"
+            >
+              <div className="ch-quad">
+                <div className="ch-quad-grid">
+                  {['ANPR — LANE 01', 'TRAFFIC — NORTH', 'PARKING — BAY 12', 'PERIMETER — GATE'].map((label, i) => (
+                    <div key={i} className="ch-quad-cell"
+                      style={{ background: `linear-gradient(160deg, rgba(1,97,254,${0.10 + i * 0.03}) 0%, #020c1b 85%)` }}
+                    >
+                      <span className="ch-quad-rec"><span className="ch-quad-dot ch-pulse" />REC</span>
+                      <span className="ch-quad-label">{label}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="ch-quad-center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M20.188 10.934a8.5 8.5 0 0 1 0 2.132M16.477 5.523a8.5 8.5 0 0 1 1.512 1.512M10.934 3.812a8.5 8.5 0 0 1 2.132 0M5.523 7.523a8.5 8.5 0 0 1 1.512-1.512M3.812 13.066a8.5 8.5 0 0 1 0-2.132M7.523 18.477a8.5 8.5 0 0 1-1.512-1.512M13.066 20.188a8.5 8.5 0 0 1-2.132 0M18.477 16.477a8.5 8.5 0 0 1-1.512 1.512" />
+                  </svg>
+                </div>
+              </div>
+              <p className="text-center text-slate-500 text-xs font-mono mt-4 tracking-wide">
+                4 independent AI channels · one housing
+              </p>
             </motion.div>
           </div>
         </div>
 
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-          style={{ background: 'linear-gradient(to bottom, transparent, rgba(2,12,27,0.6))' }} />
+        {/* Sticky tab nav */}
+        <div className={`ch-tabnav ${tabSticky ? 'ch-tabnav-shadow' : ''}`}>
+          <div className="max-w-[1280px] mx-auto px-6 lg:px-10 flex items-center gap-8 overflow-x-auto">
+            {tabs.map(t => (
+              <a
+                key={t.id}
+                href={`#${t.id}`}
+                onClick={() => setActiveTab(t.id)}
+                className={`ch-tab ${activeTab === t.id ? 'ch-tab-active' : ''}`}
+              >
+                {t.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
     </>
   );

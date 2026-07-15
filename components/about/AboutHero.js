@@ -51,17 +51,7 @@ export default function AboutHero() {
         About SecureAAi Systems
       </motion.div>
 
-      <motion.h1
-        variants={fadeInUp}
-        className="text-[clamp(2.5rem,5vw,4.5rem)] font-extrabold leading-[1.08] tracking-tight text-white mb-8"
-      >
-        Transforming Security Through <br className="hidden md:block" />
-        <span className="text-[#4D8DFF]">
-          Intelligence, Innovation, <br className="hidden md:block" />
-          and Automation
-        </span>
-      </motion.h1>
-
+      
       <motion.p
         variants={fadeInUp}
         className="text-lg md:text-xl text-white/85 leading-relaxed max-w-[800px] mx-auto font-medium"

@@ -34,9 +34,9 @@ export default function TracksiHeroSection() {
           animation:trhScan 3.5s linear infinite; pointer-events:none; }
         @keyframes trhPulse { 0%,100%{opacity:1} 50%{opacity:.2} }
         .trh-pulse { animation:trhPulse 1.5s ease-in-out infinite; }
-        .trh-anchor { display:inline-flex;align-items:center;gap:7px;padding:9px 18px;
+        .trh-anchor { display:inline-flex;align-items:center;gap:7px;padding:10px 20px;
           border-radius:9999px; background:rgba(255,255,255,.06);
-          border:1px solid rgba(255,255,255,.12);color:#93c5fd;
+          border:1px solid rgba(255,255,255,.12);color:white;
           font-size:.75rem;font-weight:600;text-decoration:none;white-space:nowrap;
           transition:background .2s,border-color .2s,color .2s,transform .2s; }
         .trh-anchor:hover { background:rgba(1,97,254,.22);border-color:rgba(1,97,254,.45);
@@ -56,8 +56,13 @@ export default function TracksiHeroSection() {
         .trh-btn-s:hover { background:rgba(255,255,255,.18);transform:translateY(-2px); }
       `}</style>
 
-      <section ref={ref} className="relative overflow-hidden flex items-center min-h-screen"
-        style={{ background:'linear-gradient(145deg,#020b1a 0%,#061533 45%,#0a2050 100%)' }}>
+      <section
+        ref={ref}
+        className="relative overflow-hidden pt-10  min-h-[80vh] flex items-center border-b border-slate-800 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/products/tracksi/hero.png')",
+        }}
+      >
         <div className="absolute inset-0 pointer-events-none"
           style={{ backgroundImage:'radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px)',
             backgroundSize:'28px 28px' }} />
@@ -75,9 +80,9 @@ export default function TracksiHeroSection() {
           </svg>
         </div>
 
-        <div className="relative w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-36 lg:py-44">
+        <div className="relative w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-10 py-24 sm:py-32 lg:py-40">
           <div className="max-w-3xl">
-            <div className="trh-rev trh-d0 mb-7">
+            <div className="trh-rev trh-d0 mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
                 style={{ background:'rgba(1,97,254,.14)',border:'1px solid rgba(1,97,254,.32)',
                   color:'#93c5fd',fontSize:'.68rem',fontWeight:700,letterSpacing:'.12em',textTransform:'uppercase' }}>
@@ -86,30 +91,20 @@ export default function TracksiHeroSection() {
               </span>
             </div>
 
-            <h1 className="trh-rev trh-d1 font-extrabold tracking-tight text-white mb-4"
+            <h1 className="trh-rev trh-d1 font-extrabold tracking-tight text-white mb-5"
               style={{ fontSize:'clamp(2.8rem,5.5vw,4.5rem)',lineHeight:1.05 }}>
               TrackSi™
             </h1>
-            <p className="trh-rev trh-d2 mb-3"
+            <p className="trh-rev trh-d2 mb-5"
               style={{ fontSize:'clamp(1.1rem,2vw,1.4rem)',fontWeight:700,color:'#93c5fd',lineHeight:1.3 }}>
               Advanced Fleet Management & GPS Tracking
             </p>
-            <p className="trh-rev trh-d3 text-slate-300 text-base sm:text-lg leading-relaxed mb-12 max-w-2xl">
+            <p className="trh-rev trh-d3 text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl">
               TrackSi™ combines high-precision 4G LTE tracking hardware with a powerful, centralized software platform. Monitor assets in real-time, review historical routes, and receive critical alerts instantly.
             </p>
 
-            <div className="trh-rev trh-d4 flex flex-wrap gap-4 mb-14">
-              <a href="#hardware" className="trh-btn-p">
-                EXPLORE HARDWARE
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </a>
-              <a href="#software" className="trh-btn-s">VIEW PLATFORM</a>
-            </div>
-
             <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
-              transition={{duration:.75,delay:.5,ease:[.22,1,.36,1]}} className="flex flex-wrap gap-2">
+              transition={{duration:.75,delay:.5,ease:[.22,1,.36,1]}} className="flex flex-wrap gap-3 mt-2">
               {anchors.map((a,i)=>(
                 <a key={i} href={a.href} className="trh-anchor">
                   <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

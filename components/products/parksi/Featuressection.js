@@ -110,19 +110,15 @@ export default function FeaturesSection() {
 
           {/* Header */}
           <div className="text-center mb-16">
-           <div className="text-center mb-16">
+            <span className="inline-block bg-[#0161FE] text-white text-sm font-semibold px-4 py-1 rounded">
+              Key Features
+            </span>
 
-  <span className="inline-block bg-[#8DC63F] text-white text-sm font-semibold px-4 py-1 rounded">
-    Key Features
-  </span>
+            <h2 className="mt-5 text-5xl font-bold text-slate-900">
+              Smart Parking Management Starts Here
+            </h2>
 
-  <h2 className="mt-5 text-5xl font-bold text-[#17686A]">
-    Smart Parking Management Starts Here
-  </h2>
-
-</div>
-          
-            <p className="fs-rev fs-d2 text-slate-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="fs-rev fs-d2 mt-5 text-slate-500 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
               From entry gate to exit barrier, ParkSi automates every touchpoint so your team focuses on experience, not operations.
             </p>
           </div>
@@ -139,20 +135,21 @@ export default function FeaturesSection() {
         duration: 0.6,
         delay: i * 0.12,
       }}
-      className="group bg-white text-center px-10 py-12 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 border-b-[3px] border-b-[#8DC63F]"
+      style={{ willChange: 'transform, opacity' }}
+      className="group bg-white text-center px-10 py-12 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 border-b-[3px] border-b-[#0161FE]"
     >
       {/* Icon */}
-      <div className="mx-auto mb-8 w-[88px] h-[88px] rounded-full bg-[#0E666A] flex items-center justify-center shadow-lg group-hover:scale-105 transition">
-        <div className="text-white [&>svg]:w-12 [&>svg]:h-12">
+      <div className="mx-auto mb-8 w-[88px] h-[88px] rounded-full bg-[#0161FE] flex items-center justify-center shadow-lg group-hover:scale-105 transition">
+        <div className="text-white [&>svg]:w-18 [&>svg]:h-13">
           {f.icon}
         </div>
       </div>
 
-      <h3 className="text-[28px] font-semibold text-[#17686A] mb-5">
+      <h3 className="text-[28px] font-semibold text-slate-900 mb-5">
         {f.title}
       </h3>
 
-      <p className="text-[16px] leading-8 text-gray-500">
+      <p className="text-[16px]  text-gray-500">
         {f.desc}
       </p>
     </motion.div>

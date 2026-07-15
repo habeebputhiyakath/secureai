@@ -19,24 +19,24 @@ const software = [
 
 export default function SoftwareSolutions() {
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="bg-white py-24 lg:py-32">
+      <div className="max-w-6xl mx-auto px-6 lg:px-10">
 
         {/* Heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 lg:mb-20">
 
-          <span className="inline-block bg-[#8BC53F] text-white text-sm font-semibold px-4 py-1 rounded-sm">
+          <span className="inline-block bg-[#0161FE] text-white text-sm font-semibold px-4 py-1.5 rounded-sm">
             Software Solutions
           </span>
 
-          <h2 className="mt-5 text-4xl lg:text-5xl font-bold text-[#16686A]">
+          <h2 className="mt-5 text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
             User-friendly Interfaces, Swift Operation
           </h2>
 
         </div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-14 max-w-4xl mx-auto">
 
           {software.map((item, index) => (
             <motion.div
@@ -60,11 +60,11 @@ export default function SoftwareSolutions() {
               </div>
 
               {/* Content */}
-              <h3 className="mt-6 text-2xl font-semibold text-[#16686A]">
+              <h3 className="mt-6 text-2xl font-semibold text-slate-900">
                 {item.title}
               </h3>
 
-              <p className="mt-3 text-gray-600 leading-8 max-w-md mx-auto">
+              <p className="mt-3 text-gray-600  max-w-md mx-auto">
                 {item.description}
               </p>
             </motion.div>

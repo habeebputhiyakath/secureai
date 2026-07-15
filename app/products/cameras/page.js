@@ -6,6 +6,8 @@ import CamerasHeroSection from '@/components/products/cameras/HeroSection';
 import CamerasCategoriesSection from '@/components/products/cameras/Categoriessection';
 import CamerasKeyFeaturesSection from '@/components/products/cameras/Keyfeaturessection';
 import CamerasCtaSection from '@/components/products/cameras/Ctasection';
+import CamerasOverviewSection from '@/components/products/cameras/Camerasoverviewsection';
+import CamerasSpecsMountingSection from '@/components/products/cameras/Camerasspecsmountingsection';
 
 export default function IntelligentCamerasPage() {
   return (
@@ -14,7 +16,10 @@ export default function IntelligentCamerasPage() {
 
       {/* 1 — Hero (dark full-screen) */}
       <CamerasHeroSection />
+      <CamerasOverviewSection />
 
+
+<CamerasSpecsMountingSection/>
       {/* 2 — Product Categories (5 camera families) */}
       <CamerasCategoriesSection />
 
@@ -24,7 +29,6 @@ export default function IntelligentCamerasPage() {
       {/* 4 — CTA */}
       <CamerasCtaSection />
 
-      <Footer />
     </main>
   );
 }

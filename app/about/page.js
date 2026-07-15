@@ -15,18 +15,72 @@ import {
   Eye,
   ArrowRight,
 } from "lucide-react";
+import { FaVideo, FaUsers } from "react-icons/fa";
+import CountUp from "react-countup";
+import JourneyMilestones from "../../components/about/Journeymilestones";   
+import EcosystemShowcase from "../../components/about/EcosystemShowcase"
+import WhyOrganizationsSection from "../../components/about/WhyOrganizationsSection";
 
-/* ── Ecosystem of Solutions data ── */
+
 const solutions = [
-  { icon: LayoutGrid, label: "SiVMS™", title: "Enterprise VMS", desc: "A robust, scalable video management software for complex infrastructures." },
-  { icon: IdCard, label: "Si.PRO™", title: "ANPR", desc: "High-accuracy automatic number plate recognition for traffic and logistics." },
-  { icon: ParkingCircle, label: "ParkSi™", title: "Smart Parking", desc: "IoT-driven parking management with real-time occupancy and billing." },
-  { icon: Brain, label: "CORE ANALYTICS", title: "AI Video Analytics", desc: "Intelligent behavior recognition, object tracking, and anomaly detection." },
-  { icon: Video, label: "OPTIC SENSING", title: "Intelligent Cameras", desc: "Edge-processing cameras that analyze data locally for instant response." },
-  { icon: Unlock, label: "SECURE ENTRY", title: "Access Control", desc: "Biometric and RFID authentication integrated with AI verification." },
-  { icon: AlertTriangle, label: "PERIMETER SHIELD", title: "Intruder Alarms", desc: "Zero-false-alarm intrusion detection using multi-spectral sensing." },
-  { icon: TrafficCone, label: "SMART FLOW", title: "Traffic Monitoring", desc: "City-wide monitoring systems for flow optimization and incident alerts." },
+  {
+    icon: LayoutGrid,
+    label: "SiVMS™",
+    title: "Enterprise VMS",
+    desc: "A robust, scalable video management software for complex infrastructures.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=Enterprise+VMS",
+  },
+  {
+    icon: IdCard,
+    label: "Si.PRO™",
+    title: "ANPR",
+    desc: "High-accuracy automatic number plate recognition for traffic and logistics.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=ANPR",
+  },
+  {
+    icon: ParkingCircle,
+    label: "ParkSi™",
+    title: "Smart Parking",
+    desc: "IoT-driven parking management with real-time occupancy and billing.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=Smart+Parking",
+  },
+  {
+    icon: Brain,
+    label: "CORE ANALYTICS",
+    title: "AI Video Analytics",
+    desc: "Intelligent behavior recognition, object tracking, and anomaly detection.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=AI+Video+Analytics",
+  },
+  {
+    icon: Video,
+    label: "OPTIC SENSING",
+    title: "Intelligent Cameras",
+    desc: "Edge-processing cameras that analyze data locally for instant response.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=Intelligent+Cameras",
+  },
+  {
+    icon: Unlock,
+    label: "SECURE ENTRY",
+    title: "Access Control",
+    desc: "Biometric and RFID authentication integrated with AI verification.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=Access+Control",
+  },
+  {
+    icon: AlertTriangle,
+    label: "PERIMETER SHIELD",
+    title: "Intruder Alarms",
+    desc: "Zero-false-alarm intrusion detection using multi-spectral sensing.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=Intruder+Alarms",
+  },
+  {
+    icon: TrafficCone,
+    label: "SMART FLOW",
+    title: "Traffic Monitoring",
+    desc: "City-wide monitoring systems for flow optimization and incident alerts.",
+    image: "https://placehold.co/1200x800/0f172a/5b9fff?text=Traffic+Monitoring",
+  },
 ];
+
 
 /* ── Journey & Milestones data ── */
 const milestones = [
@@ -218,326 +272,352 @@ export default function AboutUsPage() {
         {/* ══════════════════════════════
             HERO
         ══════════════════════════════ */}
-        <header className="relative min-h-[85vh] flex items-center pt-38 pb-26 overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105"
-              style={{
-                backgroundImage:
-                  "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgteY21ARtFp4-j1BAVwfq_GQ13RWBWFCKkqjpy0ej8OtVNQHW8kEESoVvKmHJdksiciAOECsQR8Rl-6XexwNTTQWAix3IqiG64pKzVX1JXGAMWnd-uCsU0WQB_kH8gN_B1i4fWq80peO_VkbqjoBGAiO3HtbIcVKkRVaONFQva1kr1t_x3et1dmSnMDl_9CjIrXKBYInUat6qINgIJhlkdKna5hgyEHq0GzBkt-JXSVKk1RUTHtNMXtHSmiHDRfTo7HHfI4e1jmY-')",
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/60 to-transparent" />
-          </div>
+      <header className="relative h-[85vh] flex items-center pt-38 pb-26 overflow-hidden">
+  <div className="absolute inset-0 z-0">
+    <div
+      className="w-full h-full bg-cover bg-center bg-no-repeat transform scale-105"
+      style={{
+        backgroundImage: "url('/about/use.png')",
+      }}
+    />
+    {/* Optional dark overlay for better readability */}
+    <div className="absolute inset-0 bg-black/40" />
+  </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 w-full">
-            <div className="max-w-2xl">
-              <div className="au-rev inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0161FE]/10 text-[#0161FE] au-eyebrow mb-6">
-                <span className="w-2 h-2 rounded-full bg-[#0161FE] animate-pulse" />
-                THE FUTURE OF INTELLIGENCE
-              </div>
+  <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 w-full">
+    <div className="max-w-2xl">
+      <div className="au-rev inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white border border-white/20 au-eyebrow mb-6 backdrop-blur-sm">
+        <span className="w-2 h-2 rounded-full bg-[#0161FE] animate-pulse" />
+        THE FUTURE OF INTELLIGENCE
+      </div>
 
-              <h1
-                className="au-rev text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-[1.08] tracking-tight"
-                style={{ transitionDelay: "0.08s" }}
-              >
-                About SecureAAi Systems
-              </h1>
+      <h1
+        className="au-rev text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-[1.08] tracking-tight"
+        style={{ transitionDelay: "0.08s" }}
+      >
+        About SecureAAi Systems
+      </h1>
 
-              <p
-                className="au-rev text-2xl font-semibold text-[#0161FE] mb-8 leading-snug"
-                style={{ transitionDelay: "0.16s" }}
-              >
-                Transforming Security Through Intelligence, Innovation, and Automation
-              </p>
+      <p
+        className="au-rev text-lg text-white/80 mb-10 max-w-xl leading-relaxed"
+        style={{ transitionDelay: "0.24s" }}
+      >
+        SecureAAi represents a paradigm shift moving from simple observation
+        to proactive intelligence. We leverage advanced AI algorithms to
+        anticipate threats, automate responses, and provide actionable insights
+        in real-time.
+      </p>
 
-              <p
-                className="au-rev text-lg text-slate-600 mb-10 max-w-xl leading-relaxed"
-                style={{ transitionDelay: "0.24s" }}
-              >
-               SecureAAi represents a paradigm shift moving from simple observation to proactive intelligence. We leverage advanced AI algorithms to anticipate threats, automate responses, and provide actionable insights in real-time.
-              </p>
+      <div
+        className="au-rev flex flex-wrap gap-4"
+        style={{ transitionDelay: "0.32s" }}
+      >
+        <button className="au-cta-btn">
+          EXPLORE OUR CORE TECH
+          <ArrowRight size={14} />
+        </button>
 
-              <div className="au-rev flex flex-wrap gap-4" style={{ transitionDelay: "0.32s" }}>
-                <button className="au-cta-btn">
-                  EXPLORE OUR CORE TECH
-                  <ArrowRight size={14} />
-                </button>
-                <button className="au-cta-ghost">VIEW ECOSYSTEM</button>
-              </div>
-            </div>
-          </div>
-        </header>
+       
+      </div>
+    </div>
+  </div>
+</header>
 
         {/* ══════════════════════════════
             WHO WE ARE
         ══════════════════════════════ */}
-        <section className="py-24 lg:py-38 bg-white">
-          <div className="max-w-7xl mx-auto px-5 md:px-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="order-2 lg:order-1">
-                <h2 className="au-rev text-3xl lg:text-4xl font-bold text-slate-900 mb-8">
-                  <span className="au-accent-line">Who We Are</span>
-                </h2>
-                <div className="space-y-6">
-                  <p className="au-rev text-lg text-slate-600 leading-relaxed" style={{ transitionDelay: "0.08s" }}>
-                    SecureAAi Systems is a technology-driven AI security specialist dedicated to revolutionizing how environments are monitored and protected. Born from the intersection of high-performance sensing and advanced computer vision, we bridge the gap between complex data and human safety.
-                  </p>
-                  <p className="au-rev text-base text-slate-600 leading-relaxed" style={{ transitionDelay: "0.16s" }}>
-                    Our team of engineers and data scientists works at the forefront of LoRaWAN® and AI sensing technology, creating a unified ecosystem where every sensor contributes to a smarter, safer world. From large-scale industrial facilities to modern corporate campuses, we provide the neural network that powers modern security.
-                  </p>
-                  <div className="au-rev grid grid-cols-2 gap-8 pt-6" style={{ transitionDelay: "0.24s" }}>
-                    <div>
-                      <div className="au-mono text-[#0161FE] text-[40px] font-bold mb-1">500+</div>
-                      <div className="text-sm font-medium text-slate-400">Global Projects</div>
-                    </div>
-                    <div>
-                      <div className="au-mono text-[#0161FE] text-[40px] font-bold mb-1">99.9%</div>
-                      <div className="text-sm font-medium text-slate-400">System Uptime</div>
-                    </div>
-                  </div>
-                </div>
+       {/* ==========================================
+    WHO WE ARE
+========================================== */}
+<section className="py-24 lg:py-38 bg-white">
+  <div className="max-w-7xl mx-auto px-5 md:px-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      {/* Left */}
+      <div className="order-2 lg:order-1">
+
+        <h2 className="au-rev text-3xl lg:text-4xl font-bold text-slate-900 mb-8">
+          <span className="au-accent-line">Who We Are</span>
+        </h2>
+
+        <div className="space-y-6">
+
+          <p
+            className="au-rev text-lg text-slate-600 leading-relaxed"
+            style={{ transitionDelay: "0.08s" }}
+          >
+            SecureAAi Systems is a technology-driven AI security specialist
+            dedicated to revolutionizing how environments are monitored and
+            protected. Born from the intersection of high-performance sensing
+            and advanced computer vision, we bridge the gap between complex data
+            and human safety.
+          </p>
+
+          <p
+            className="au-rev text-base text-slate-600 leading-relaxed"
+            style={{ transitionDelay: "0.16s" }}
+          >
+            Our team of engineers and data scientists works at the forefront of
+            LoRaWAN® and AI sensing technology, creating a unified ecosystem
+            where every sensor contributes to a smarter, safer world. From
+            large-scale industrial facilities to modern corporate campuses, we
+            provide the neural network that powers modern security.
+          </p>
+
+          {/* Stats */}
+          <div
+            className="au-rev grid grid-cols-1 sm:grid-cols-2 gap-10 pt-10"
+            style={{ transitionDelay: "0.24s" }}
+          >
+            {/* Happy Clients */}
+            <div className="flex items-center gap-5 group">
+
+              <div className="w-24 h-24 rounded-full bg-[#F5F9FF] flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105">
+                <FaVideo className="text-[#5DA8FF] text-[50px]" />
               </div>
 
-              <div className="order-1 lg:order-2">
-                <div className="au-rev relative group" style={{ transitionDelay: "0.1s" }}>
-                  <div className="absolute -inset-4 bg-[#0161FE]/5 rounded-3xl group-hover:bg-[#0161FE]/10 transition-colors duration-500" />
-                  <img
-                    alt="Modern smart building interior"
-                    className="relative rounded-2xl shadow-2xl w-full h-[400px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                    src="https://lh3.googleusercontent.com/aida/AP1WRLtGNGMEjTKEIdfV27dqCuG8_C96XbZu0OU8sTbBo9GZWy_ONf5Bk0CIY9w6ie2wp_udDnMF8pq2-lOrn89QIuikqnL--ShLuvbqmSNTflrSycbd-avy84hTG6J39NZH4nUoQ24kpyp0vQZcBPTQag3BY3oEA3TaAXNS3mGEZmTirhKy_tUyKKiklI0X6PgNoKX7gxC9TclYiSUMCVfdFKGzU2fmiEaImRbvvVmAuw64Rc7XuL5jeeOapisS"
+              <div>
+                <h3 className="text-[48px] lg:text-[52px] font-bold leading-none text-slate-900">
+                  <CountUp
+                    end={1001}
+                    duration={2.5}
+                    enableScrollSpy
+                    scrollSpyOnce
                   />
-                  <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl max-w-xs transition-transform duration-500 group-hover:-translate-y-2 au-float">
-                    <Network className="text-[#0161FE] mb-2" size={34} />
-                    <p className="text-sm font-medium text-slate-900">Integrated AI-IoT Architecture Ready for Scale.</p>
-                  </div>
-                </div>
+                  +
+                </h3>
+
+                <p className="mt-2 text-[20px] lg:text-[22px] font-medium text-[#5DA8FF]">
+                  Happy Clients
+                </p>
               </div>
+
             </div>
+
+            {/* Projects Done */}
+            <div className="flex items-center gap-5 group">
+
+              <div className="w-24 h-24 rounded-full bg-[#F5F9FF] flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105">
+                <FaUsers className="text-[#5DA8FF] text-[50px]" />
+              </div>
+
+              <div>
+                <h3 className="text-[48px] lg:text-[52px] font-bold leading-none text-slate-900">
+                  <CountUp
+                    end={620}
+                    duration={2.5}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  />
+                  +
+                </h3>
+
+                <p className="mt-2 text-[20px] lg:text-[22px] font-medium text-[#5DA8FF]">
+                  Projects Done
+                </p>
+              </div>
+
+            </div>
+
           </div>
-        </section>
+
+        </div>
+
+      </div>
+
+      {/* Right Image */}
+      <div className="order-1 lg:order-2">
+
+        <div
+          className="au-rev relative group"
+          style={{ transitionDelay: "0.1s" }}
+        >
+
+          <div className="absolute -inset-4 bg-[#0161FE]/5 rounded-3xl group-hover:bg-[#0161FE]/10 transition-colors duration-500" />
+
+          <img
+            src="/about/who we are.png"
+            alt="Modern smart building interior"
+            className="relative rounded-2xl shadow-2xl w-full h-[400px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+
+          <div className="absolute bottom-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-xl shadow-xl max-w-xs transition-transform duration-500 group-hover:-translate-y-2">
+
+            <Network
+              className="text-[#0161FE] mb-3"
+              size={36}
+            />
+
+            <p className="text-sm font-medium text-slate-900">
+              Integrated AI-IoT Architecture Ready for Scale.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
         {/* ══════════════════════════════
             OUR JOURNEY & MILESTONES
         ══════════════════════════════ */}
-        <section className="au-dotgrid relative py-24 lg:py-32 bg-slate-100 overflow-hidden">
-          <div className="relative max-w-7xl mx-auto px-5 md:px-10">
-            <div className="text-center mb-20 lg:mb-24">
-              <h2 className="au-rev text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-                <span className="au-accent-line">Our Journey &amp; Milestones</span>
-              </h2>
-              <p className="au-rev text-lg text-slate-600 max-w-2xl mx-auto" style={{ transitionDelay: "0.08s" }}>
-                Two decades of pioneering intelligence and securing the future.
-              </p>
-            </div>
-
-            <div className="relative max-w-5xl mx-auto">
-              {/* Vertical line */}
-              <div
-                className="absolute left-1/2 top-0 bottom-0 w-1 -translate-x-1/2 z-0 hidden md:block"
-                style={{ background: "linear-gradient(to bottom, transparent, #0161FE 15%, #0161FE 85%, transparent)" }}
-              />
-
-              <div className="space-y-14 md:space-y-4">
-                {milestones.map((m, i) => {
-                  const leftSide = i % 2 === 0;
-                  return (
-                    <div key={m.year} className="relative flex flex-col md:flex-row items-center group py-4">
-                      <div
-                        className={`flex-1 w-full md:w-auto ${leftSide ? "md:pr-16 md:text-right" : "md:pr-16 hidden md:block"}`}
-                      >
-                        {leftSide && (
-                          <div
-                            className="au-rev bg-white/70 backdrop-blur-md p-8 rounded-2xl border border-slate-200 border-l-4 border-l-[#0161FE] transition-all duration-300 md:group-hover:-translate-x-2 group-hover:shadow-xl group-hover:border-slate-300"
-                            style={{ transitionDelay: `${i * 0.06}s` }}
-                          >
-                            <div className="au-mono text-[#0161FE] text-4xl font-bold mb-2">{m.year}</div>
-                            <h4 className="text-xl font-semibold text-slate-900 mb-3">{m.title}</h4>
-                            <p className="text-base text-slate-600 leading-relaxed">{m.desc}</p>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="relative z-10 flex items-center justify-center my-6 md:my-0 shrink-0">
-                        <div
-                          className={`relative flex items-center justify-center rounded-full transition-transform group-hover:scale-125 ${
-                            m.hero
-                              ? "w-12 h-12 bg-[#0161FE] border-4 border-slate-50 shadow-lg shadow-[#0161FE]/40"
-                              : "w-10 h-10 bg-white border-4 border-[#0161FE] shadow-[0_0_20px_rgba(1,97,254,0.35)]"
-                          }`}
-                        >
-                          {m.hero ? (
-                            <Rocket className="text-white" size={20} />
-                          ) : (
-                            <div className={`w-3 h-3 rounded-full bg-[#0161FE] relative ${i === 0 ? "au-ping" : ""}`} />
-                          )}
-                        </div>
-                      </div>
-
-                      <div className={`flex-1 w-full md:w-auto ${!leftSide ? "md:pl-16" : "md:pl-16 hidden md:block"}`}>
-                        {!leftSide && (
-                          <div
-                            className={`au-rev bg-white/70 backdrop-blur-md p-8 rounded-2xl border border-slate-200 border-r-4 border-r-[#0161FE] transition-all duration-300 md:group-hover:translate-x-2 group-hover:shadow-xl group-hover:border-slate-300 ${
-                              m.hero ? "bg-[#0161FE]/5" : ""
-                            }`}
-                            style={{ transitionDelay: `${i * 0.06}s` }}
-                          >
-                            <div className="au-mono text-[#0161FE] text-4xl font-bold mb-2">{m.year}</div>
-                            <h4 className="text-xl font-semibold text-slate-900 mb-3">{m.title}</h4>
-                            <p className="text-base text-slate-600 leading-relaxed">{m.desc}</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
+       <JourneyMilestones milestones={milestones} />
         {/* ══════════════════════════════
             MISSION & VISION
         ══════════════════════════════ */}
-        <section className="relative bg-slate-900 py-28 lg:py-40 overflow-hidden">
-          <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay" />
-          <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-700/50 rounded-2xl overflow-hidden">
-              <div
-                className="au-rev bg-slate-900 p-10 lg:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-700/50"
-              >
-                <div className="au-mv-icon mb-6">
-                  <Rocket className="text-blue-200" size={30} />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-6">Our Mission</h3>
-                <p className="text-lg text-slate-200 opacity-90 leading-relaxed">
-                  To deliver innovative and intelligent security technologies that empower organizations to protect what matters most with unprecedented precision and automated intelligence.
-                </p>
-              </div>
+       <section className="relative bg-slate-900 py-28 lg:py-40 overflow-hidden">
 
-              <div className="au-rev bg-slate-900 p-10 lg:p-16 flex flex-col justify-center" style={{ transitionDelay: "0.12s" }}>
-                <div className="au-mv-icon mb-6">
-                  <Eye className="text-blue-200" size={30} />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-6">Our Vision</h3>
-                <p className="text-lg text-slate-200 opacity-90 leading-relaxed">
-                  To become a globally recognized leader in AI-powered security, setting the gold standard for intelligent monitoring through seamless hardware and software integration.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+    style={{
+      backgroundImage: "url('/about/vision.png')",
+    }}
+  />
 
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-slate-900/80" />
+
+  {/* Content */}
+  <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-700/50 rounded-2xl overflow-hidden">
+
+      {/* Mission */}
+      <div className="au-rev bg-slate-900/70 backdrop-blur-sm p-10 lg:p-16 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-700/50">
+        <div className="au-mv-icon mb-6">
+          <Rocket className="text-blue-200" size={30} />
+        </div>
+
+        <h3 className="text-3xl font-bold text-white mb-6">
+          Our Mission
+        </h3>
+
+        <p className="text-lg text-slate-200 leading-relaxed">
+          To deliver innovative and intelligent security technologies that empower organizations to protect what matters most with unprecedented precision and automated intelligence.
+        </p>
+      </div>
+
+      {/* Vision */}
+      <div
+        className="au-rev bg-slate-900/70 backdrop-blur-sm p-10 lg:p-16 flex flex-col justify-center"
+        style={{ transitionDelay: "0.12s" }}
+      >
+        <div className="au-mv-icon mb-6">
+          <Eye className="text-blue-200" size={30} />
+        </div>
+
+        <h3 className="text-3xl font-bold text-white mb-6">
+          Our Vision
+        </h3>
+
+        <p className="text-lg text-slate-200 leading-relaxed">
+          To become a globally recognized leader in AI-powered security, setting the gold standard for intelligent monitoring through seamless hardware and software integration.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
         {/* ══════════════════════════════
             OUR ECOSYSTEM OF SOLUTIONS
-        ══════════════════════════════ */}
-        <section className="au-dotgrid relative py-24 lg:py-42 bg-slate-50 overflow-hidden">
-          <div className="relative max-w-7xl mx-auto px-5 md:px-10">
-            <div className="text-center mb-16 lg:mb-20">
-              <h2 className="au-rev text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-                <span className="au-accent-line">Our Ecosystem of Solutions</span>
-              </h2>
-              <p className="au-rev text-lg text-slate-600 max-w-2xl mx-auto" style={{ transitionDelay: "0.08s" }}>
-                High-performance AI security tailored for enterprise-scale operations.
-              </p>
-            </div>
+      {/* ══════════════════════════════ */}
+<section className="au-ecosystem relative py-24 lg:py-42 bg-slate-50 overflow-hidden">
+  <div className="absolute inset-0 au-dotgrid opacity-60" />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {solutions.map((s, i) => {
-                const Icon = s.icon;
-                return (
-                  <div
-                    key={s.title}
-                    className="au-rev au-card bg-white/70 backdrop-blur-md border border-slate-200/70 p-8 rounded-2xl"
-                    style={{ transitionDelay: `${(i % 4) * 0.08}s` }}
-                  >
-                    <div className="au-card-icon w-14 h-14 bg-[#0161FE]/10 rounded-xl flex items-center justify-center mb-6 text-[#0161FE]">
-                      <Icon size={26} />
-                    </div>
-                    <h4 className="text-xl font-semibold mb-3 text-slate-900">{s.title}</h4>
-                    <p className="text-base text-slate-600 leading-relaxed">{s.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
+  <div className="relative max-w-7xl mx-auto px-5 md:px-10">
+    <div className="text-center mb-16 lg:mb-20">
+      <h2 className="au-rev text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+        <span className="au-accent-line">
+          Our{" "}
+          <span className="bg-gradient-to-r from-[#0161FE] to-[#4d8dff] bg-clip-text text-transparent">
+            Ecosystem
+          </span>{" "}
+          of Solutions
+        </span>
+      </h2>
+      <p className="au-rev text-lg text-slate-600 max-w-2xl mx-auto" style={{ transitionDelay: "0.08s" }}>
+        High-performance AI security tailored for enterprise-scale operations.
+      </p>
+    </div>
 
+    <EcosystemShowcase solutions={solutions} />
+  </div>
+</section>
         {/* ══════════════════════════════
             WHY CHOOSE SECUREAAI
         ══════════════════════════════ */}
-        <section className="py-24 lg:py-32 bg-slate-100">
-          <div className="max-w-7xl mx-auto px-5 md:px-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-              <div className="lg:col-span-4">
-                <div className="sticky top-32">
-                  <h2 className="au-rev text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-                    <span className="au-accent-line">Why Organizations Choose SecureAAi</span>
-                  </h2>
-                  <p className="au-rev text-base text-slate-600 mb-8 leading-relaxed" style={{ transitionDelay: "0.08s" }}>
-                    We don't just sell security hardware; we provide the architectural foundation for a future-ready, intelligent enterprise.
-                  </p>
-                  <div className="au-rev p-8 bg-[#0161FE] rounded-2xl text-white" style={{ transitionDelay: "0.16s" }}>
-                    <h4 className="text-2xl font-semibold mb-4">Enterprise Grade</h4>
-                    <p className="text-sm font-medium opacity-90 leading-relaxed">
-                      Designed for critical infrastructure where performance is non-negotiable.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="lg:col-span-8">
-                <div className="space-y-4">
-                  {whyPoints.map((p, i) => (
-                    <div
-                      key={p.num}
-                      className="au-rev au-point flex flex-col sm:flex-row gap-6 sm:gap-8 items-start p-6 sm:p-8 rounded-2xl transition-colors border border-transparent group"
-                      style={{ transitionDelay: `${i * 0.06}s` }}
-                    >
-                      <span className="au-point-num au-mono text-[48px] font-bold leading-none text-[#0161FE]/20">
-                        {p.num}
-                      </span>
-                      <div>
-                        <h4 className="text-2xl font-semibold text-slate-900 mb-2">{p.title}</h4>
-                        <p className="text-base text-slate-600 leading-relaxed">{p.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+    {/* ══════════════════════════════ */}
+<section className="py-24 lg:py-32 bg-slate-100 relative overflow-hidden">
+  <div className="max-w-7xl mx-auto px-5 md:px-10">
+    <WhyOrganizationsSection whyPoints={whyPoints} />
+  </div>
+</section>
 
         {/* ══════════════════════════════
             FINAL COMMITMENT
         ══════════════════════════════ */}
-        <section className="py-28 lg:py-36 bg-[#0161FE] mt-6 relative overflow-hidden">
-          <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/10 to-transparent" />
-          </div>
-          <div className="relative z-10 max-w-4xl mx-auto px-5 text-center">
-            <h2 className="au-rev text-4xl lg:text-5xl font-bold text-white mb-8 tracking-tight leading-tight">
-              Building the Future of Intelligent Security
-            </h2>
-            <p className="au-rev text-lg text-white/90 mb-12 leading-relaxed" style={{ transitionDelay: "0.08s" }}>
-              Our commitment goes beyond products. We are partners in your digital transformation, helping you harness the power of AI to create safer, more efficient environments for everyone.
-            </p>
-            <div
-              className="au-rev inline-block px-8 py-4 bg-white/10 backdrop-blur-md rounded-full border border-white/20 mb-12"
-              style={{ transitionDelay: "0.16s" }}
-            >
-              <p className="au-mono text-sm font-semibold text-white tracking-[0.2em] uppercase">
-                Intelligent Security • Smarter Decisions • Connected Operations
-              </p>
-            </div>
-            <div className="au-rev" style={{ transitionDelay: "0.24s" }}>
-              <button className="bg-white text-[#0161FE] px-9 py-2 rounded-full text-lg font-semibold hover:shadow-2xl hover:shadow-white/20 transition-all hover:scale-105">
-                Get in Touch With Us
-              </button>
-            </div>
-          </div>
-        </section>
+       <section className="relative overflow-hidden py-32 lg:py-40 mt-8">
+
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{
+      backgroundImage: "url('/about/bg.png')",
+    }}
+  />
+
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-slate-950/80" />
+
+  {/* Blue Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-br from-[#0161FE]/40 via-slate-950/60 to-slate-950/90" />
+
+  {/* Decorative Blur */}
+  <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-[#0161FE]/20 blur-3xl" />
+  <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-blue-400/10 blur-3xl" />
+
+  {/* Content */}
+  <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+
+    <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-6 py-2 text-sm font-semibold tracking-[0.25em] uppercase text-white backdrop-blur-md">
+      SecureAAi Systems
+    </span>
+
+    <h2 className="mt-8 text-4xl md:text-5xl lg:text-5xl font-bold text-white leading-tight">
+      Building the Future of
+      <br />
+      <span className="text-blue-300">
+        Intelligent Security
+      </span>
+    </h2>
+
+   
+
+    <div className="mt-5 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-4 backdrop-blur-md">
+      <p className="text-sm lg:text-base font-thin uppercase trackin text-white">
+        Intelligent Security • Smarter Decisions • Connected Operations
+      </p>
+    </div>
+
+    <div className="mt-14 flex flex-col sm:flex-row justify-center gap-5">
+
+      <button className="rounded-full bg-[#0161FE] px-10 py-4 text-lg font-semibold text-white shadow-2xl shadow-blue-600/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-700">
+        Get in Touch
+      </button>
+
+      <button className="rounded-full border border-white/25 bg-white/10 px-10 py-4 text-lg font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white hover:text-[#0161FE]">
+        Explore Solutions
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
       </main>
     </>
   );

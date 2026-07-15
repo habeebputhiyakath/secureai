@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const featuredCards = [
   {
@@ -57,10 +57,51 @@ const SLOTS = [
   { x: 360, y: 437, w: 108, h: 76,  r: 14 }, // off-stage
 ];
 
+// ── Hero background slides. Each slide carries its own copy so the
+// text on the left rotates in sync with the background image. ──
+const heroSlides = [
+  {
+    id: 'surveillance',
+    image: '/home/hero1.png',
+    badge: 'AI Security Platform · Since 2018',
+   headingTop: 'Next-Generation',
+headingHighlight: 'AI Security Solutions',
+    body: 'SecureAAI Systems delivers enterprise-grade AI security solutions — ANPR, VMS, Smart Parking, and Intelligent Video Analytics — for smart cities, enterprises, and critical infrastructure worldwide.',
+  },
+  {
+    id: 'vms',
+    image: 'https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=1600&q=80',
+    badge: 'Enterprise VMS · SiVMS',
+    headingTop: 'Centralized video',
+    headingHighlight: 'management at scale',
+    body: 'SiVMS unifies 10,000+ camera networks into a single command center — AI-driven search, instant retrieval, and real-time alerts across every site.',
+  },
+  {
+    id: 'parking',
+    image: 'https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?w=1600&q=80',
+    badge: 'Smart Parking · ParkSi',
+    headingTop: 'Real-time parking',
+    headingHighlight: 'intelligence, citywide',
+    body: 'ParkSi manages 5,000+ bays with live occupancy tracking, automated enforcement, and seamless payment integration across multiple locations.',
+  },
+  {
+    id: 'analytics',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80',
+    badge: 'AI Analytics · TRACKSi',
+    headingTop: 'Actionable insight',
+    headingHighlight: 'from every camera',
+    body: 'TRACKSi turns raw footage into decisions — foot-traffic patterns, shrinkage detection, and behavioral analytics that cut losses by up to 40%.',
+  },
+];
+
 export default function HeroSection() {
   // `order` is a queue of card indices. order[0] = main, order[1..3] = thumbnails.
   const [order, setOrder] = useState(featuredCards.map((_, i) => i));
   const [paused, setPaused] = useState(false);
+
+  // Hero background/text slide index
+  const [slideIndex, setSlideIndex] = useState(0);
+  const slideTimer = useRef(null);
 
   useEffect(() => {
     if (paused) return;
@@ -70,54 +111,99 @@ export default function HeroSection() {
     return () => clearInterval(t);
   }, [paused]);
 
+  useEffect(() => {
+    slideTimer.current = setInterval(() => {
+      setSlideIndex(i => (i + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(slideTimer.current);
+  }, []);
+
+  const slide = heroSlides[slideIndex];
+  const total = heroSlides.length;
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-[72px]">
 
-      {/* ── Background video ── */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/hero1.mp4" type="video/mp4" />
-      </video>
+      {/* ── Background image slideshow (slides right → left) ── */}
+      <div className="absolute inset-0">
+        {heroSlides.map((s, i) => {
+          // shortest signed distance from this slide to the active slide,
+          // so the transition always travels right-to-left, even on wrap.
+          let diff = i - slideIndex;
+          if (diff > total / 2) diff -= total;
+          if (diff < -total / 2) diff += total;
+
+          return (
+            <div
+              key={s.id}
+              className="absolute inset-0"
+              style={{
+                transform: `translateX(${diff * 100}%)`,
+                opacity: diff === 0 ? 1 : 0,
+                zIndex: diff === 0 ? 1 : 0,
+                transition: 'transform 1.1s cubic-bezier(0.22,1,0.36,1), opacity 0.9s ease',
+              }}
+            >
+              <img
+                src={s.image}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+          );
+        })}
+      </div>
 
       {/* Dark gradient overlay for contrast */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#02061a]/95 via-[#02061a]/10 to-[#0161FE]/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#02061a]/90 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#02061a]/95 via-[#02061a]/10 to-[#0161FE]/40 z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#02061a]/90 via-transparent to-transparent z-[2]" />
 
-      <div className="relative w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-20">
+      {/* Slide indicator dots */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-auto lg:right-10 lg:translate-x-0 flex gap-2 z-[3]">
+        {heroSlides.map((s, i) => (
+          <button
+            key={s.id}
+            onClick={() => setSlideIndex(i)}
+            aria-label={`Show slide ${i + 1}`}
+            className="p-1.5 cursor-pointer bg-transparent border-none"
+          >
+            <span
+              className="block rounded-full transition-all duration-300"
+              style={{
+                width: i === slideIndex ? 22 : 6,
+                height: 6,
+                backgroundColor: i === slideIndex ? '#0161FE' : 'rgba(255,255,255,0.35)',
+              }}
+            />
+          </button>
+        ))}
+      </div>
+
+      <div className="relative z-[3] w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[72px] items-center">
 
-          {/* ── LEFT ── */}
-          <div>
+          {/* ── LEFT (text re-mounts on slide change → drops in from top) ── */}
+          <div key={slide.id}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-[7px] bg-white/5 backdrop-blur-sm border border-white/15 rounded-full px-[14px] py-[6px] text-[0.72rem] font-semibold tracking-[0.08em] text-[#7fb1ff] uppercase mb-6 animate-[saaiUp_0.65s_0.05s_ease_both]">
+            <div className="inline-flex items-center gap-[7px] bg-white/5 backdrop-blur-sm border border-white/15 rounded-full px-[14px] py-[6px] text-[0.72rem] font-semibold tracking-[0.08em] text-[#7fb1ff] uppercase mb-6 animate-[saaiDropTop_0.6s_0.05s_cubic-bezier(0.22,1,0.36,1)_both]">
               <span className="w-[7px] h-[7px] rounded-full bg-[#0161FE] animate-[saai-blink_1.4s_ease-in-out_infinite]" />
-              AI Security Platform · Since 2018
+              {slide.badge}
             </div>
 
             {/* H1 */}
-            <h1 className="font-sans text-[clamp(2.6rem,4.5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-5 animate-[saaiUp_0.65s_0.18s_ease_both]">
-              <span className="hidden sm:inline-block whitespace-nowrap">AI-powered security &amp; </span>
-              <br className="hidden sm:block" />
-              <span className="hidden sm:inline-block text-[#4d8bff] whitespace-nowrap">intelligent <span className="text-white">surveillance</span></span>
-
-              <span className="block sm:hidden">AI-powered</span>
-              <span className="block sm:hidden">security</span>
-              <span className="block sm:hidden">&amp; intelligent</span>
-              <span className="block sm:hidden text-[#4d8bff]">surveillance</span>
+            <h1 className="font-sans text-[clamp(2.6rem,4.5vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-white mb-5 animate-[saaiDropTop_0.6s_0.15s_cubic-bezier(0.22,1,0.36,1)_both]">
+              {slide.headingTop}
+              <br />
+              <span className="text-[#4d8bff]">{slide.headingHighlight}</span>
             </h1>
 
             {/* Body */}
-            <p className="text-[1.05rem] text-white/60 leading-[1.75] font-normal max-w-[480px] mb-9 animate-[saaiUp_0.65s_0.30s_ease_both]">
-              SecureAAI Systems delivers enterprise-grade AI security solutions — ANPR, VMS, Smart Parking, and Intelligent Video Analytics — for smart cities, enterprises, and critical infrastructure worldwide.
+            <p className="text-[1.05rem] text-white/60 leading-[1.75] font-normal max-w-[480px] mb-9 animate-[saaiDropTop_0.6s_0.25s_cubic-bezier(0.22,1,0.36,1)_both]">
+              {slide.body}
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-3 mb-9 animate-[saaiUp_0.65s_0.42s_ease_both]">
+            <div className="flex flex-wrap gap-3 mb-9 animate-[saaiDropTop_0.6s_0.35s_cubic-bezier(0.22,1,0.36,1)_both]">
               <a
                 href="#demo"
                 className="inline-flex items-center gap-[9px] bg-[#0161FE] hover:bg-[#0052d6] text-white font-semibold text-[0.9rem] px-7 py-[14px] rounded-full border-none cursor-pointer transition-all duration-[180ms] tracking-[0.01em] no-underline hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(1,97,254,0.35)]"
@@ -139,7 +225,7 @@ export default function HeroSection() {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-5 animate-[saaiUp_0.65s_0.54s_ease_both]">
+            <div className="flex flex-wrap gap-5 animate-[saaiDropTop_0.6s_0.45s_cubic-bezier(0.22,1,0.36,1)_both]">
               {['SIRA Approved', 'ISO 27001 Certified', 'GDPR Compliant'].map(t => (
                 <div key={t} className="flex items-center gap-[7px] text-[0.8rem] text-white/50 font-medium">
                   <div className="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center text-[10px] text-[#7fb1ff] flex-shrink-0">✓</div>
@@ -271,6 +357,10 @@ export default function HeroSection() {
       <style>{`
         @keyframes saaiUp {
           from { opacity: 0; transform: translateY(20px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes saaiDropTop {
+          from { opacity: 0; transform: translateY(-26px); }
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes saai-blink {

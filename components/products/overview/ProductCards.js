@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const PRODUCTS = [
   {
     id: 'sivms',
-    image: 'https://www.satlinks.in/Encyc/2025/3/18/video-management-system_202503181711430983_H@@IGHT_504_W@@IDTH_900.jpg',
+    image: '/products/overview/sivms.png',
     badge: 'Video Management',
     name: 'SiVMS™',
     tagline: 'Enterprise Video Management System',

@@ -61,8 +61,7 @@ export default function ParkingPage() {
       {/* 5 ─ Use Cases */}
       <UseCasesSection />
 
-      {/* 6 ─ Integration */}
-      <IntegrationSection />
+    
 
 
       {/* 8 ─ CTA (full-width blue) */}

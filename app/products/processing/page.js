@@ -24,7 +24,6 @@ export default function ProcessingUnitsPage() {
       {/* 4 — CTA */}
       <ProcessingCtaSection />
 
-      <Footer />
     </main>
   );
 }

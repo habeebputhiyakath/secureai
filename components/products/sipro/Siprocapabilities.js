@@ -12,7 +12,7 @@ const CORE_CAPS = [
     accentBg: 'rgba(1,97,254,0.07)',
     accentBorder: 'rgba(1,97,254,0.18)',
     glow: 'rgba(1,97,254,0.12)',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop',
+    image: '/products/sipro/anpr.png',
     imageAlt: 'Highway at night with light trails',
     attrs: null,
     iconPath: (
@@ -300,12 +300,7 @@ function HeroVisual() {
         />
       ))}
 
-      {/* Dark overlay */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'linear-gradient(135deg,rgba(6,13,26,0.78) 0%,rgba(6,13,26,0.35) 55%,transparent 100%)',
-      }} />
-
+      
       {/* Reticle */}
       <div style={{
         position: 'absolute', top: '16%', left: '10%',
@@ -418,11 +413,11 @@ function HeroVisual() {
   );
 }
 
-/* ─── APPLICATION CARDS ─────────────────────────────────── */
+/* ─── APPLICATION SCENE VISUALS (fill entire card) ──────── */
 function SmartCitiesVisual() {
   return (
-    <div style={{ height: 120, background: 'linear-gradient(135deg,#0a0f2e 0%,#0c1e5e 50%,#0a0f2e 100%)', position: 'relative', overflow: 'hidden' }}>
-      <svg width="100%" height="90" viewBox="0 0 160 90" preserveAspectRatio="xMidYMax meet" style={{ position: 'absolute', bottom: 0 }}>
+    <div style={{ height: '100%', width: '100%', background: 'linear-gradient(135deg,#0a0f2e 0%,#0c1e5e 50%,#0a0f2e 100%)', position: 'relative', overflow: 'hidden' }}>
+      <svg width="100%" height="100%" viewBox="0 0 160 90" preserveAspectRatio="xMidYMax slice" style={{ position: 'absolute', inset: 0 }}>
         <rect x="10" y="55" width="14" height="35" fill="rgba(1,97,254,0.4)" rx="1" />
         <rect x="28" y="40" width="18" height="50" fill="rgba(1,97,254,0.5)" rx="1" />
         <rect x="50" y="30" width="20" height="60" fill="rgba(56,189,248,0.4)" rx="1" />
@@ -442,15 +437,14 @@ function SmartCitiesVisual() {
       <div style={{ position: 'absolute', top: 8, left: 20, width: 2, height: 2, borderRadius: '50%', background: '#fff', opacity: 0.6, animation: 'scPulse 2s 0.3s ease-in-out infinite' }} />
       <div style={{ position: 'absolute', top: 14, left: 50, width: 1.5, height: 1.5, borderRadius: '50%', background: '#fff', opacity: 0.5, animation: 'scPulse 2.5s 0.7s ease-in-out infinite' }} />
       <div style={{ position: 'absolute', top: 6, right: 30, width: 2, height: 2, borderRadius: '50%', background: '#fff', opacity: 0.7, animation: 'scPulse 1.8s 1.1s ease-in-out infinite' }} />
-      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(1,97,254,0.25)', border: '1px solid rgba(1,97,254,0.35)', borderRadius: 6, padding: '4px 8px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.45rem', color: '#93c5fd' }}>LIVE MAP</div>
     </div>
   );
 }
 
 function TrafficVisual() {
   return (
-    <div style={{ height: 120, background: 'linear-gradient(135deg,#0d0b2e 0%,#1a1050 50%,#0d0b2e 100%)', position: 'relative', overflow: 'hidden' }}>
-      <svg width="100%" height="90" viewBox="0 0 140 90" preserveAspectRatio="xMidYMid meet" style={{ position: 'absolute', inset: 0 }}>
+    <div style={{ height: '100%', width: '100%', background: 'linear-gradient(135deg,#0d0b2e 0%,#1a1050 50%,#0d0b2e 100%)', position: 'relative', overflow: 'hidden' }}>
+      <svg width="100%" height="100%" viewBox="0 0 140 90" preserveAspectRatio="xMidYMid slice" style={{ position: 'absolute', inset: 0 }}>
         <rect x="0" y="60" width="140" height="30" fill="rgba(99,102,241,0.1)" />
         <rect x="0" y="58" width="140" height="2" fill="rgba(99,102,241,0.3)" />
         <rect x="0" y="73" width="25" height="2" fill="rgba(255,255,255,0.15)" rx="1" />
@@ -465,14 +459,13 @@ function TrafficVisual() {
         <rect x="5" y="63" width="22" height="10" fill="rgba(99,102,241,0.6)" rx="2" style={{ animation: 'scCarRight 5s 0s linear infinite' }} />
         <rect x="80" y="63" width="18" height="10" fill="rgba(99,102,241,0.4)" rx="2" style={{ animation: 'scCarRight 5s 2s linear infinite' }} />
       </svg>
-      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(99,102,241,0.2)', border: '1px solid rgba(99,102,241,0.3)', borderRadius: 6, padding: '4px 8px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.45rem', color: '#a5b4fc' }}>FLOW: HIGH</div>
     </div>
   );
 }
 
 function AccessVisual() {
   return (
-    <div style={{ height: 120, background: 'linear-gradient(135deg,#051a12 0%,#0a3326 50%,#051a12 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ height: '100%', width: '100%', background: 'linear-gradient(135deg,#051a12 0%,#0a3326 50%,#051a12 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <svg width="120" height="90" viewBox="0 0 120 90" style={{ position: 'absolute' }}>
         <circle cx="60" cy="50" r="35" fill="none" stroke="rgba(5,150,105,0.15)" strokeWidth="1" />
         <circle cx="60" cy="50" r="25" fill="none" stroke="rgba(5,150,105,0.2)" strokeWidth="1" />
@@ -485,14 +478,13 @@ function AccessVisual() {
         <polyline points="56 50 59 53 65 47" stroke="#059669" strokeWidth="1.5" fill="none" strokeLinecap="round" />
         <circle cx="75" cy="35" r="2.5" fill="#059669" style={{ animation: 'scPing 2s 0.5s ease-out infinite' }} />
       </svg>
-      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(5,150,105,0.2)', border: '1px solid rgba(5,150,105,0.3)', borderRadius: 6, padding: '4px 8px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.45rem', color: '#6ee7b7' }}>AUTHORIZED</div>
     </div>
   );
 }
 
 function ParkingVisual() {
   return (
-    <div style={{ height: 120, background: 'linear-gradient(135deg,#1a1000 0%,#2d1f00 50%,#1a1000 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ height: '100%', width: '100%', background: 'linear-gradient(135deg,#1a1000 0%,#2d1f00 50%,#1a1000 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <svg width="140" height="90" viewBox="0 0 140 90" style={{ position: 'absolute' }}>
         <line x1="15" y1="10" x2="15" y2="80" stroke="rgba(217,119,6,0.2)" strokeWidth="0.5" />
         <line x1="50" y1="10" x2="50" y2="80" stroke="rgba(217,119,6,0.2)" strokeWidth="0.5" />
@@ -509,14 +501,13 @@ function ParkingVisual() {
         <rect x="53" y="48" width="34" height="24" fill="rgba(217,119,6,0.25)" rx="2" stroke="rgba(217,119,6,0.4)" strokeWidth="0.5" />
         <rect x="93" y="48" width="29" height="24" fill="rgba(217,119,6,0.25)" rx="2" stroke="rgba(217,119,6,0.4)" strokeWidth="0.5" />
       </svg>
-      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(217,119,6,0.2)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: 6, padding: '4px 8px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.45rem', color: '#fcd34d' }}>5/6 FULL</div>
     </div>
   );
 }
 
 function LawVisual() {
   return (
-    <div style={{ height: 120, background: 'linear-gradient(135deg,#1a0808 0%,#300d0d 50%,#1a0808 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ height: '100%', width: '100%', background: 'linear-gradient(135deg,#1a0808 0%,#300d0d 50%,#1a0808 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ position: 'absolute', width: 50, height: 50, borderRadius: '50%', border: '2px solid rgba(220,38,38,0.5)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'scRipple 2s ease-out infinite' }} />
       <div style={{ position: 'absolute', width: 50, height: 50, borderRadius: '50%', border: '2px solid rgba(220,38,38,0.4)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'scRipple 2s 0.7s ease-out infinite' }} />
       <div style={{ position: 'absolute', width: 50, height: 50, borderRadius: '50%', border: '2px solid rgba(220,38,38,0.3)', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', animation: 'scRipple 2s 1.4s ease-out infinite' }} />
@@ -525,18 +516,13 @@ function LawVisual() {
           <path d="M12 2l3 4h4l-2 4 2 4h-4l-3 4-3-4H5l2-4-2-4h4z" /><polyline points="10 11 12 13 15 10" />
         </svg>
       </div>
-      <div style={{ position: 'absolute', right: 8, top: 10, display: 'flex', flexDirection: 'column', gap: 3 }}>
-        <div style={{ background: 'rgba(220,38,38,0.2)', border: '1px solid rgba(220,38,38,0.3)', borderRadius: 4, padding: '2px 6px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.42rem', color: '#fca5a5', animation: 'scDataFlow 3s 0s ease-in-out infinite' }}>⚠ KA09CD8800</div>
-        <div style={{ background: 'rgba(220,38,38,0.15)', border: '1px solid rgba(220,38,38,0.25)', borderRadius: 4, padding: '2px 6px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.42rem', color: '#fca5a5', animation: 'scDataFlow 3s 1s ease-in-out infinite' }}>⚠ MH01AB2234</div>
-      </div>
-      <div style={{ position: 'absolute', bottom: 10, left: 10, fontFamily: "'JetBrains Mono',monospace", fontSize: '0.42rem', color: 'rgba(252,165,165,0.6)' }}>ALERT · 2 MATCHES</div>
     </div>
   );
 }
 
 function LogisticsVisual() {
   return (
-    <div style={{ height: 120, background: 'linear-gradient(135deg,#100820 0%,#1e1040 50%,#100820 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ height: '100%', width: '100%', background: 'linear-gradient(135deg,#100820 0%,#1e1040 50%,#100820 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <svg width="140" height="90" viewBox="0 0 140 90" style={{ position: 'absolute' }}>
         <ellipse cx="70" cy="50" rx="50" ry="18" fill="none" stroke="rgba(124,58,237,0.25)" strokeWidth="1" style={{ animation: 'scSpin 8s linear infinite' }} />
         <ellipse cx="70" cy="50" rx="35" ry="13" fill="none" stroke="rgba(124,58,237,0.2)" strokeWidth="0.5" style={{ animation: 'scSpinR 6s linear infinite' }} />
@@ -549,7 +535,6 @@ function LogisticsVisual() {
         <line x1="10" y1="20" x2="50" y2="42" stroke="rgba(124,58,237,0.2)" strokeWidth="0.5" strokeDasharray="3,3" />
         <line x1="130" y1="25" x2="90" y2="42" stroke="rgba(124,58,237,0.2)" strokeWidth="0.5" strokeDasharray="3,3" />
       </svg>
-      <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(124,58,237,0.2)', border: '1px solid rgba(124,58,237,0.3)', borderRadius: 6, padding: '4px 8px', fontFamily: "'JetBrains Mono',monospace", fontSize: '0.45rem', color: '#c4b5fd' }}>TRACKING</div>
     </div>
   );
 }
@@ -557,19 +542,19 @@ function LogisticsVisual() {
 const APPLICATIONS = [
   {
     label: 'Smart Cities',
+    tag: '500+ intersections monitored',
     color: '#0161FE',
-    bg: 'rgba(1,97,254,0.08)',
     Visual: SmartCitiesVisual,
     icon: (
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="7" width="7" height="14" /><rect x="14" y="3" width="7" height="18" />
       </svg>
     ),
   },
   {
     label: 'Traffic Monitoring',
+    tag: 'Real-time flow analysis',
     color: '#6366f1',
-    bg: 'rgba(99,102,241,0.08)',
     Visual: TrafficVisual,
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -582,8 +567,8 @@ const APPLICATIONS = [
   },
   {
     label: 'Access Control',
+    tag: 'Biometric verification',
     color: '#059669',
-    bg: 'rgba(5,150,105,0.08)',
     Visual: AccessVisual,
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -594,8 +579,8 @@ const APPLICATIONS = [
   },
   {
     label: 'Parking Management',
+    tag: 'Live occupancy tracking',
     color: '#d97706',
-    bg: 'rgba(217,119,6,0.08)',
     Visual: ParkingVisual,
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -605,8 +590,8 @@ const APPLICATIONS = [
   },
   {
     label: 'Law Enforcement',
+    tag: 'Instant blacklist alerts',
     color: '#dc2626',
-    bg: 'rgba(220,38,38,0.08)',
     Visual: LawVisual,
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -616,8 +601,8 @@ const APPLICATIONS = [
   },
   {
     label: 'Logistics Centers',
+    tag: 'Fleet & asset tracking',
     color: '#7c3aed',
-    bg: 'rgba(124,58,237,0.08)',
     Visual: LogisticsVisual,
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -628,49 +613,93 @@ const APPLICATIONS = [
   },
 ];
 
-function AppCard({ app }) {
+function AppCard({ app, hero = false, index = 0 }) {
+  const cardRef = useRef(null);
   const [hovered, setHovered] = useState(false);
+
+  const handleMove = useCallback((e) => {
+    const el = cardRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
+    el.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
+  }, []);
+
   return (
     <div
+      ref={cardRef}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onMouseMove={handleMove}
       style={{
-        borderRadius: 18,
-        border: `1.5px solid ${hovered ? app.color + '55' : '#e2e8f0'}`,
-        background: '#fff',
+        position: 'relative',
+        borderRadius: 20,
         overflow: 'hidden',
         cursor: 'default',
-        transition: 'all 0.28s ease',
-        transform: hovered ? 'translateY(-4px)' : 'none',
-        boxShadow: hovered ? `0 12px 36px ${app.color}1A` : '0 1px 5px rgba(0,0,0,0.04)',
+        border: `1.5px solid ${hovered ? app.color + '77' : 'rgba(226,232,240,0.9)'}`,
+        boxShadow: hovered ? `0 26px 60px -14px ${app.color}40, 0 0 0 1px ${app.color}22` : '0 1px 5px rgba(0,0,0,0.05)',
+        transition: 'border-color 0.35s, box-shadow 0.35s, transform 0.35s',
+        transform: hovered ? 'translateY(-3px)' : 'none',
+        animation: `scFadeUp 0.6s ${0.08 * index}s ease both`,
       }}
     >
-      <app.Visual />
+      {/* Full-bleed animated scene */}
+      <div style={{ position: 'absolute', inset: 0 }}>
+        <app.Visual />
+      </div>
+
+      {/* Legibility scrim */}
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(4,8,20,0.05) 0%, rgba(4,8,20,0.15) 45%, rgba(4,8,20,0.82) 100%)' }} />
+
+      {/* Cursor spotlight */}
       <div style={{
-        padding: '12px 14px 14px',
-        background: hovered ? app.bg : '#fff',
-        transition: 'background 0.3s',
-        display: 'flex', alignItems: 'center', gap: 10,
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        opacity: hovered ? 1 : 0, transition: 'opacity 0.4s',
+        background: `radial-gradient(280px circle at var(--mx,50%) var(--my,50%), ${app.color}2E, transparent 72%)`,
+      }} />
+
+      {/* Icon chip */}
+      <div style={{
+        position: 'absolute', top: 16, left: 16,
+        width: hero ? 46 : 38, height: hero ? 46 : 38, borderRadius: 12,
+        background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255,255,255,0.22)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff',
+        transform: hovered ? 'scale(1.08) rotate(-4deg)' : 'scale(1) rotate(0deg)',
+        transition: 'transform 0.35s cubic-bezier(0.22,1,0.36,1)',
       }}>
-        <div style={{
-          width: 32, height: 32, borderRadius: 8,
-          background: hovered ? `${app.color}18` : 'rgba(0,0,0,0.04)',
-          border: `1px solid ${hovered ? app.color + '30' : 'rgba(0,0,0,0.07)'}`,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          color: hovered ? app.color : '#64748b',
-          flexShrink: 0, transition: 'all 0.25s',
-        }}>
-          {app.icon}
+        {app.icon}
+      </div>
+
+      {/* Bottom content */}
+      <div style={{ position: 'absolute', left: 18, right: 18, bottom: 16, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
+        <div>
+          <div style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: hero ? '1.35rem' : '0.98rem',
+            fontWeight: 800, color: '#fff', marginBottom: 5, letterSpacing: '-0.01em',
+            textShadow: '0 2px 10px rgba(0,0,0,0.35)',
+          }}>
+            {app.label}
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: "'JetBrains Mono', monospace", fontSize: hero ? '0.65rem' : '0.6rem', color: 'rgba(255,255,255,0.75)', letterSpacing: '0.03em' }}>
+            <span style={{ width: 5, height: 5, borderRadius: '50%', background: app.color, boxShadow: `0 0 8px ${app.color}`, flexShrink: 0 }} />
+            {app.tag}
+          </div>
         </div>
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.84rem', fontWeight: 600, color: hovered ? '#0f172a' : '#475569', transition: 'color 0.25s', flex: 1 }}>
-          {app.label}
-        </span>
-        <svg
-          width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={app.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-          style={{ opacity: hovered ? 1 : 0, transform: hovered ? 'translateX(2px)' : 'none', transition: 'all 0.2s' }}
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
+
+        <div style={{
+          width: hero ? 36 : 30, height: hero ? 36 : 30, borderRadius: '50%', flexShrink: 0,
+          background: hovered ? app.color : 'rgba(255,255,255,0.14)',
+          border: '1px solid rgba(255,255,255,0.28)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          transform: hovered ? 'rotate(45deg)' : 'none',
+          transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
+        }}>
+          <svg width={hero ? 15 : 13} height={hero ? 15 : 13} viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+          </svg>
+        </div>
       </div>
     </div>
   );
@@ -699,6 +728,30 @@ const GLOBAL_CSS = `
 
   .sc-section { box-sizing: border-box; }
   .sc-section *, .sc-section *::before, .sc-section *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Bento grid for application cards */
+  .sc-app-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 190px; gap: 16px; }
+  .sc-app-grid > *:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .sc-app-grid > *:nth-child(2) { grid-column: 3 / 4; grid-row: 1 / 2; }
+  .sc-app-grid > *:nth-child(3) { grid-column: 3 / 4; grid-row: 2 / 3; }
+  .sc-app-grid > *:nth-child(4) { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .sc-app-grid > *:nth-child(5) { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .sc-app-grid > *:nth-child(6) { grid-column: 3 / 4; grid-row: 3 / 4; }
+
+  @media (max-width: 860px) {
+    .sc-app-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+    .sc-app-grid > *:nth-child(1) { grid-column: 1 / 3; grid-row: 1 / 2; }
+    .sc-app-grid > *:nth-child(2) { grid-column: 1 / 2; grid-row: 2 / 3; }
+    .sc-app-grid > *:nth-child(3) { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .sc-app-grid > *:nth-child(4) { grid-column: 1 / 2; grid-row: 3 / 4; }
+    .sc-app-grid > *:nth-child(5) { grid-column: 2 / 3; grid-row: 3 / 4; }
+    .sc-app-grid > *:nth-child(6) { grid-column: 1 / 3; grid-row: 4 / 5; }
+  }
+
+  @media (max-width: 560px) {
+    .sc-app-grid { grid-template-columns: 1fr; grid-auto-rows: 220px; }
+    .sc-app-grid > * { grid-column: 1 / 2 !important; grid-row: auto !important; }
+  }
 `;
 
 /* ─── MAIN COMPONENT ────────────────────────────────────── */
@@ -816,10 +869,10 @@ export default function SiProCapabilities() {
           </div>
         </div>
 
-        {/* ── APPLICATION CARDS — 3 per row ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
-          {APPLICATIONS.map((app) => (
-            <AppCard key={app.label} app={app} />
+        {/* ── APPLICATION CARDS — bento grid, first tile featured ── */}
+        <div className="sc-app-grid">
+          {APPLICATIONS.map((app, i) => (
+            <AppCard key={app.label} app={app} hero={i === 0} index={i} />
           ))}
         </div>
 

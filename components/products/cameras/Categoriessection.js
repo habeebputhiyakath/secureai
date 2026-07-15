@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const categories = [
@@ -13,8 +13,9 @@ const categories = [
     accentBg: 'rgba(1,97,254,0.08)',
     accentBorder: 'rgba(1,97,254,0.2)',
     specs: ['99%+ Read Accuracy', 'Up to 250 km/h', 'IR Illumination', 'Multi-Lane Support'],
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKjJIKvV5mgtp46bC_-JBpBFfZ8y4kHR44rYQOXAvpZw&s=10',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="1" y="3" width="15" height="13" rx="2" />
         <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
         <circle cx="5.5" cy="18.5" r="2.5" />
@@ -32,8 +33,9 @@ const categories = [
     accentBg: 'rgba(5,150,105,0.08)',
     accentBorder: 'rgba(5,150,105,0.2)',
     specs: ['Vehicle Classification', 'Speed Detection', 'Red-Light Enforcement', 'Queue Analytics'],
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkWNSkoZKGB8lwDoKycZjKvYC89gk6Hrg4vvux15NKHvUm12fA0s2fZ04&s=10',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21 4 19 4s-2 1-3.5 2.5L11 8 2.8 6.2l-1 1.4 5.5 4-1.3 1.5-2.3-.8-.9 1L5 15l2.7 1.5 1 .6L10.2 19l1-.9-.8-2.3 1.5-1.3z" />
       </svg>
     ),
@@ -48,8 +50,9 @@ const categories = [
     accentBg: 'rgba(124,58,237,0.08)',
     accentBorder: 'rgba(124,58,237,0.2)',
     specs: ['< 80ms Detection', 'Bay-Level Accuracy', 'ANPR Integration', 'Overhead & Fisheye'],
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5P5hl1wtmZ7bDzNeonVEG9l2JYQBr--IXhURc0Lp7ZQ&s=10',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <polyline points="9 22 9 12 15 12 15 22" />
       </svg>
@@ -65,8 +68,9 @@ const categories = [
     accentBg: 'rgba(220,38,38,0.08)',
     accentBorder: 'rgba(220,38,38,0.2)',
     specs: ['Edge AI Processing', 'Facial Recognition', 'Crowd Analytics', 'Behaviour Detection'],
+    image: 'https://www.hikvision.com/content/hikvision/us-en/newsroom/blog/2023/02/artificial-intelligence-and-advanced-analytics-enable-highly-functional-solutions/_jcr_content/root/responsivegrid/Img-0.coreimg.100.1280.jpeg/1697251392335/blog-feb-8.jpeg',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="3" />
         <path d="M20.188 10.934a8.5 8.5 0 0 1 0 2.132M16.477 5.523a8.5 8.5 0 0 1 1.512 1.512M10.934 3.812a8.5 8.5 0 0 1 2.132 0M5.523 7.523a8.5 8.5 0 0 1 1.512-1.512M3.812 13.066a8.5 8.5 0 0 1 0-2.132M7.523 18.477a8.5 8.5 0 0 1-1.512-1.512M13.066 20.188a8.5 8.5 0 0 1-2.132 0M18.477 16.477a8.5 8.5 0 0 1-1.512 1.512" />
       </svg>
@@ -82,8 +86,9 @@ const categories = [
     accentBg: 'rgba(14,165,233,0.08)',
     accentBorder: 'rgba(14,165,233,0.2)',
     specs: ['Thermal + Optical', '360° Coverage', 'Panoramic View', 'Single PoE Install'],
+    image: 'https://global.linovision.com/cdn/shop/products/IPC7PT6D54-Main1.jpg?v=1638950622',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
         <line x1="2" y1="12" x2="22" y2="12" />
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -91,6 +96,48 @@ const categories = [
     ),
   },
 ];
+
+function CardMedia({ image, gradient, icon, label, index, height }) {
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <div className={`${height} overflow-hidden relative`} style={{ background: gradient }}>
+      {!failed ? (
+        <img
+          src={image}
+          alt={label}
+          className="ccat-img-area absolute inset-0 w-full h-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        // Fallback shown until the real photo is dropped into /public/products/cameras/
+        <div className="ccat-img-area absolute inset-0 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center"
+            style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)' }}
+          >
+            {icon}
+          </div>
+        </div>
+      )}
+      {/* Gradient wash for legibility + brand tie-in over real photos */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(2,12,27,0.05) 0%, rgba(2,12,27,0.45) 100%)' }} />
+
+      {/* Small icon chip, bottom-left */}
+      <div className="absolute bottom-4 left-4 w-9 h-9 rounded-xl flex items-center justify-center"
+        style={{ background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.25)' }}
+      >
+        {icon}
+      </div>
+
+      {/* Number badge */}
+      <div className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center"
+        style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)' }}
+      >
+        <span className="text-white text-xs font-bold">0{index}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function CamerasCategoriesSection() {
   const ref = useRef(null);
@@ -129,7 +176,7 @@ export default function CamerasCategoriesSection() {
         .ccat-img-area {
           transition: transform 0.55s cubic-bezier(0.22,1,0.36,1);
         }
-        .ccat-card:hover .ccat-img-area { transform: scale(1.03); }
+        .ccat-card:hover .ccat-img-area { transform: scale(1.05); }
 
         .ccat-spec-pill {
           font-family: 'JetBrains Mono', monospace;
@@ -152,7 +199,6 @@ export default function CamerasCategoriesSection() {
         id="categories"
         className="relative overflow-hidden bg-slate-50 py-24 lg:py-32 border-t border-slate-100"
       >
-        {/* Dot grid */}
         <div className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: 'radial-gradient(circle, #cbd5e1 1px, transparent 1px)',
@@ -161,7 +207,6 @@ export default function CamerasCategoriesSection() {
 
         <div className="relative max-w-[1280px] mx-auto px-6 lg:px-10">
 
-          {/* Section header */}
           <div className="text-center mb-16">
             <div className="ccat-rev ccat-d0 mb-4 inline-flex items-center gap-2 px-4 py-2 rounded-full"
               style={{
@@ -182,10 +227,8 @@ export default function CamerasCategoriesSection() {
             </p>
           </div>
 
-          {/* Category cards */}
           <div className="space-y-8">
 
-            {/* Row 1 — top two side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {categories.slice(0, 2).map((cat, i) => (
                 <motion.div
@@ -198,26 +241,8 @@ export default function CamerasCategoriesSection() {
                   className="ccat-card bg-white rounded-3xl overflow-hidden border border-slate-200"
                   style={{ boxShadow: '0 3px 18px rgba(0,0,0,0.06)' }}
                 >
-                  {/* Visual header */}
-                  <div className="h-52 overflow-hidden relative" style={{ background: cat.gradient }}>
-                    <div className="ccat-img-area absolute inset-0 flex items-center justify-center">
-                      <div className="flex flex-col items-center gap-4">
-                        <div className="w-20 h-20 rounded-3xl flex items-center justify-center"
-                          style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)' }}
-                        >
-                          {cat.icon}
-                        </div>
-                      </div>
-                    </div>
-                    {/* Number badge */}
-                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)' }}
-                    >
-                      <span className="text-white text-xs font-bold">0{i + 1}</span>
-                    </div>
-                  </div>
+                  <CardMedia image={cat.image} gradient={cat.gradient} icon={cat.icon} label={cat.label} index={i + 1} height="h-52" />
 
-                  {/* Body */}
                   <div className="p-7">
                     <h3 className="text-lg font-extrabold text-slate-900 mb-1" style={{ color: cat.accentColor }}>
                       {cat.label}
@@ -225,7 +250,6 @@ export default function CamerasCategoriesSection() {
                     <p className="text-sm font-semibold text-slate-500 mb-3">{cat.tagline}</p>
                     <p className="text-sm text-slate-500 leading-relaxed mb-6">{cat.desc}</p>
 
-                    {/* Spec pills */}
                     <div className="flex flex-wrap gap-2 mb-6">
                       {cat.specs.map((s, j) => (
                         <span key={j} className="ccat-spec-pill"
@@ -247,7 +271,6 @@ export default function CamerasCategoriesSection() {
               ))}
             </div>
 
-            {/* Row 2 — three across */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {categories.slice(2).map((cat, i) => (
                 <motion.div
@@ -260,23 +283,8 @@ export default function CamerasCategoriesSection() {
                   className="ccat-card bg-white rounded-3xl overflow-hidden border border-slate-200"
                   style={{ boxShadow: '0 3px 18px rgba(0,0,0,0.06)' }}
                 >
-                  {/* Visual header */}
-                  <div className="h-44 overflow-hidden relative" style={{ background: cat.gradient }}>
-                    <div className="ccat-img-area absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-2xl flex items-center justify-center"
-                        style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)' }}
-                      >
-                        {cat.icon}
-                      </div>
-                    </div>
-                    <div className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)' }}
-                    >
-                      <span className="text-white text-xs font-bold">0{i + 3}</span>
-                    </div>
-                  </div>
+                  <CardMedia image={cat.image} gradient={cat.gradient} icon={cat.icon} label={cat.label} index={i + 3} height="h-44" />
 
-                  {/* Body */}
                   <div className="p-6">
                     <h3 className="text-base font-extrabold mb-1" style={{ color: cat.accentColor }}>
                       {cat.label}

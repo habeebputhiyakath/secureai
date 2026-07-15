@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const solutions = [
@@ -14,8 +14,9 @@ const solutions = [
     accentBg: 'rgba(124,58,237,0.08)',
     accentBorder: 'rgba(124,58,237,0.2)',
     specs: ['< 50ms Latency', 'On-Device Inference', 'PoE Powered', 'Fanless Design'],
+    image: 'https://share.opsy.st/6227cd5d3208b-Edge+AI.png',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
       </svg>
     ),
@@ -31,8 +32,9 @@ const solutions = [
     accentBg: 'rgba(1,97,254,0.08)',
     accentBorder: 'rgba(1,97,254,0.2)',
     specs: ['Multi-GPU Support', '10,000+ Channels', 'PCIe Gen 4', 'Redundant PSU'],
+    image: 'https://cdn.prod.website-files.com/688af3c3b556a2c3deb298c0/69776c36d11b2a80de27c636_Product_Hero_TITAN-GM645R-G6.webp',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="4" y="4" width="16" height="16" rx="2" />
         <rect x="9" y="9" width="6" height="6" />
         <line x1="9" y1="1" x2="9" y2="4" />
@@ -57,8 +59,9 @@ const solutions = [
     accentBg: 'rgba(5,150,105,0.08)',
     accentBorder: 'rgba(5,150,105,0.2)',
     specs: ['H.265/H.264', '4K@60fps', 'Hardware Codec', 'VMS Integration'],
+    image: 'https://elexexplorer.com/wp-content/uploads/2023/05/GPU_feature_image_761x582.jpg',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" />
         <line x1="8" y1="21" x2="16" y2="21" />
         <line x1="12" y1="17" x2="12" y2="21" />
@@ -77,8 +80,9 @@ const solutions = [
     accentBg: 'rgba(217,119,6,0.08)',
     accentBorder: 'rgba(217,119,6,0.2)',
     specs: ['12TB – 4PB+', 'RAID Protected', 'AES-256 Encrypted', 'Auto Tiering'],
+    image: 'https://www.bluechipgulf.ae/wp-content/uploads/2020/01/storage-appliance.jpg',
     icon: (
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <ellipse cx="12" cy="5" rx="9" ry="3" />
         <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
         <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
@@ -86,6 +90,52 @@ const solutions = [
     ),
   },
 ];
+
+function SolutionMedia({ image, gradient, icon, label, num }) {
+  const [failed, setFailed] = useState(false);
+
+  return (
+    <div className="h-52 overflow-hidden relative" style={{ background: gradient }}>
+      {!failed ? (
+        <img
+          src={image}
+          alt={label}
+          className="psol-visual absolute inset-0 w-full h-full object-cover"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        // Fallback shown until the real product photo is dropped into /public/products/processing/
+        <div className="psol-visual absolute inset-0 flex items-center justify-center gap-8">
+          <div className="w-20 h-20 rounded-3xl flex items-center justify-center"
+            style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)' }}
+          >
+            {icon}
+          </div>
+          <div className="flex flex-col gap-2 opacity-30">
+            {[60, 80, 48, 70, 55].map((w, j) => (
+              <div key={j} className="h-1.5 rounded-full bg-white" style={{ width: w }} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Gradient wash for legibility over real photos */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(180deg, rgba(2,12,27,0.05) 0%, rgba(2,12,27,0.5) 100%)' }} />
+
+      {/* Icon chip, bottom-left */}
+      <div className="absolute bottom-4 left-4 w-10 h-10 rounded-xl flex items-center justify-center"
+        style={{ background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.25)' }}
+      >
+        {icon}
+      </div>
+
+      {/* Step number */}
+      <div className="absolute top-4 left-4">
+        <span className="psol-num text-white opacity-70">{num}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function ProcessingSolutionsSection() {
   const ref = useRef(null);
@@ -122,7 +172,7 @@ export default function ProcessingSolutionsSection() {
           transform: translateY(-5px);
         }
         .psol-visual { transition: transform 0.55s cubic-bezier(0.22,1,0.36,1); }
-        .psol-card:hover .psol-visual { transform: scale(1.03); }
+        .psol-card:hover .psol-visual { transform: scale(1.05); }
 
         .psol-spec {
           font-family: 'JetBrains Mono', monospace;
@@ -192,27 +242,7 @@ export default function ProcessingSolutionsSection() {
                 className="psol-card bg-white rounded-3xl overflow-hidden border border-slate-200"
                 style={{ boxShadow: '0 3px 18px rgba(0,0,0,0.05)' }}
               >
-                {/* Visual header */}
-                <div className="h-52 overflow-hidden relative" style={{ background: sol.gradient }}>
-                  <div className="psol-visual absolute inset-0 flex items-center justify-center gap-8">
-                    {/* Icon */}
-                    <div className="w-20 h-20 rounded-3xl flex items-center justify-center"
-                      style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)' }}
-                    >
-                      {sol.icon}
-                    </div>
-                    {/* Mini schematic lines */}
-                    <div className="flex flex-col gap-2 opacity-30">
-                      {[60, 80, 48, 70, 55].map((w, j) => (
-                        <div key={j} className="h-1.5 rounded-full bg-white" style={{ width: w }} />
-                      ))}
-                    </div>
-                  </div>
-                  {/* Step number */}
-                  <div className="absolute top-4 left-4">
-                    <span className="psol-num text-white opacity-60">{sol.num}</span>
-                  </div>
-                </div>
+                <SolutionMedia image={sol.image} gradient={sol.gradient} icon={sol.icon} label={sol.label} num={sol.num} />
 
                 {/* Body */}
                 <div className="p-7">

@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 
 export default function SivmsHeroSection() {
   const ref = useRef(null);
@@ -92,9 +91,9 @@ export default function SivmsHeroSection() {
 
       <section
         ref={ref}
-        className="relative overflow-hidden flex items-center min-h-screen"
+        className="relative overflow-hidden pt-15 min-h-[80vh] flex items-center border-b border-slate-800 bg-cover bg-center bg-no-repeat"
         style={{
-          background: 'linear-gradient(145deg, #020b1a 0%, #061533 45%, #0a2050 100%)',
+          backgroundImage: "url('/products/sivms/hero.png')",
         }}
       >
         {/* Dot-grid overlay */}
@@ -113,7 +112,7 @@ export default function SivmsHeroSection() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
           style={{ background: 'radial-gradient(circle at 40% 60%, rgba(14,165,233,0.12), transparent 65%)' }} />
 
-        <div className="relative w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-3 lg:pb-20 lg:py-44">
+        <div className="relative w-full max-w-[1280px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
           <div className="max-w-3xl">
 
             {/* Eyebrow */}
@@ -143,31 +142,26 @@ export default function SivmsHeroSection() {
             </h1>
 
             {/* Sub-heading */}
-            <p className="svh-rev svh-d2 text-slate-300 text-lg sm:text-xl leading-relaxed mb-4 max-w-2xl">
+            <p className="svh-rev svh-d2 text-slate-300 text-lg sm:text-xl leading-relaxed mb-10 max-w-2xl">
               Centralized Video Management for Intelligent Security
-            </p>
-            <p className="svh-rev svh-d3 text-slate-400 text-base leading-relaxed mb-12 max-w-2xl">
-              SiVMS™ provides live monitoring, recording, playback, event management, and AI analytics integration through a unified platform.
             </p>
 
             {/* CTAs */}
-            <div className="svh-rev svh-d4 flex flex-wrap gap-4 mb-16">
-              <a href="#" className="svh-btn-primary">
-                REQUEST DEMO
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+            <div className="svh-rev svh-d3 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <a href="#letstalk" className="svh-btn-primary">
+                Request a Demo
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
                 </svg>
               </a>
-              <a href="#" className="svh-btn-secondary">
-                EXPLORE FEATURES
+              <a href="#features" className="svh-btn-secondary">
+                Explore Features
               </a>
             </div>
 
-           
           </div>
         </div>
 
-       
       </section>
     </>
   );

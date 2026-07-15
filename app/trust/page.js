@@ -233,13 +233,37 @@ export default function TrustPage() {
   };
 
   const complianceBadges = [
-    { name: 'ISO 27001', abbr: 'ISO\n27001', desc: 'Information Security Management System certified to global standards.' },
-    { name: 'ISO 9001', abbr: 'ISO\n9001', desc: 'Quality Management System ensuring consistent, high-quality products and services.' },
-    { name: 'GDPR', abbr: 'GDPR', desc: 'Full compliance with EU General Data Protection Regulation requirements.' },
-    { name: 'NDAA', abbr: 'NDAA', desc: 'National Defense Authorization Act compliance for government deployments.' },
-    { name: 'NIS2', abbr: 'NIS2', desc: 'Adherence to the EU Network and Information Systems Directive.' },
-    { name: 'SOC 2', abbr: 'SOC 2', desc: 'Service Organization Control 2 audited for security, availability, and confidentiality.' },
-  ];
+  {
+    name: "ISO 27001",
+    image: "/trust/iso27.png",
+    desc: "Information Security Management System certified to global standards.",
+  },
+  {
+    name: "ISO 9001",
+    image: "/trust/iso90.png",
+    desc: "Quality Management System ensuring consistent, high-quality products and services.",
+  },
+  {
+    name: "GDPR",
+    image: "/trust/gdpr.png",
+    desc: "Full compliance with EU General Data Protection Regulation requirements.",
+  },
+  {
+    name: "NDAA",
+    image: "/trust/ndaa.png",
+    desc: "National Defense Authorization Act compliance for government deployments.",
+  },
+  {
+    name: "NIS2",
+    image: "/trust/nis2.png",
+    desc: "Adherence to the EU Network and Information Systems Directive.",
+  },
+  {
+    name: "PSTI",
+    image: "/trust/psti.png",
+    desc: "Compliance with the Product Security and Telecommunications Infrastructure (PSTI) requirements.",
+  },
+];
 
   return (
     <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#f8fafc', minHeight: '100vh' }}>
@@ -251,27 +275,119 @@ export default function TrustPage() {
       {/* ── Shared Navbar ── */}
       <Navbar />
 
-      {/* ── Hero Banner ── */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1a3566 60%, #0161FE 100%)',
-        paddingTop: 144, paddingBottom: 80, paddingLeft: 24, paddingRight: 24,
-      }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)', marginBottom: 24, display: 'flex', gap: 7, alignItems: 'center' }}>
-            <a href="/" style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'none' }}>Home</a>
-            <span>›</span>
-            <a href="/about" style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'none' }}>Company</a>
-            <span>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.85)' }}>Trust Center</span>
-          </div>
-          <h1 style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', fontWeight: 800, color: '#fff', marginBottom: 20, lineHeight: 1.1, letterSpacing: '-0.03em' }}>
-            Trust Center
-          </h1>
-          <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.62)', maxWidth: 600, lineHeight: 1.75 }}>
-            At SecureAAi, security and transparency are at the heart of everything we do. This Trust Center provides clear, up-to-date information about our policies and vulnerability management.
-          </p>
-        </div>
-      </div>
+     {/* ── Hero Banner ── */}
+<div
+  style={{
+    position: "relative",
+    backgroundImage: "url('/trust/trust.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    paddingTop: 144,
+    paddingBottom: 96,
+    paddingLeft: 24,
+    paddingRight: 24,
+    overflow: "hidden",
+  }}
+>
+  {/* Dark Overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background: "rgba(5, 15, 35, 0.78)",
+      zIndex: 1,
+    }}
+  />
+
+  {/* Blue Gradient Overlay */}
+  <div
+    style={{
+      position: "absolute",
+      inset: 0,
+      background:
+        "linear-gradient(135deg, rgba(1,97,254,0.45) 0%, rgba(15,23,42,0.65) 50%, rgba(1,97,254,0.25) 100%)",
+      zIndex: 2,
+    }}
+  />
+
+  {/* Content */}
+  <div
+    style={{
+      position: "relative",
+      zIndex: 3,
+      maxWidth: 1280,
+      margin: "0 auto",
+    }}
+  >
+    {/* Breadcrumb */}
+    <div
+      style={{
+        fontSize: "0.82rem",
+        color: "rgba(255,255,255,0.65)",
+        marginBottom: 28,
+        display: "flex",
+        gap: 8,
+        alignItems: "center",
+      }}
+    >
+      <a
+        href="/"
+        style={{
+          color: "rgba(255,255,255,0.65)",
+          textDecoration: "none",
+        }}
+      >
+        Home
+      </a>
+
+      <span>›</span>
+
+      <a
+        href="/about"
+        style={{
+          color: "rgba(255,255,255,0.65)",
+          textDecoration: "none",
+        }}
+      >
+        Company
+      </a>
+
+      <span>›</span>
+
+      <span style={{ color: "#fff" }}>Trust Center</span>
+    </div>
+
+    {/* Heading */}
+    <h1
+      style={{
+        fontSize: "clamp(1.8rem, 6vw, 3.8rem)",
+        fontWeight: 800,
+        color: "#fff",
+        marginBottom: 24,
+        lineHeight: 1.05,
+        letterSpacing: "-0.04em",
+      }}
+    >
+      Trust Center
+    </h1>
+
+    {/* Description */}
+    <p
+      style={{
+        fontSize: "1.15rem",
+        color: "rgba(255,255,255,0.85)",
+        maxWidth: 680,
+        lineHeight: 1.8,
+      }}
+    >
+      At SecureAAi, security and transparency are at the heart of everything we
+      do. This Trust Center provides clear, up-to-date information about our
+      security practices, compliance policies, and vulnerability management,
+      ensuring confidence in every solution we deliver.
+    </p>
+  </div>
+</div>
 
       {/* ── Sticky Tab Nav ── */}
       <div
@@ -360,8 +476,7 @@ export default function TrustPage() {
 
       </div>
 
-      {/* ── Shared Footer ── */}
-      <Footer />
+     
     </div>
   );
 }
