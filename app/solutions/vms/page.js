@@ -3,12 +3,16 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import VmsHeroSection from '@/components/solutions/vms/HeroSection';
+import VmsControlRoomBanner from '@/components/solutions/vms/ControlRoomBanner';
 import VmsWhySection from '@/components/solutions/vms/WhyVmsSection';
+import VmsKeyBenefitsSection from '@/components/solutions/vms/KeyBenefitsSection';
 import VmsCapabilitiesSection from '@/components/solutions/vms/CapabilitiesSection';
-import VmsIntegrationsSection from '@/components/solutions/vms/IntegrationsSection';
 import VmsScenariosSection from '@/components/solutions/vms/ScenariosSection';
+import VmsIndustriesSection from '@/components/solutions/vms/IndustriesSection';
+import VmsWhyChooseSection from '@/components/solutions/vms/WhyChooseSection';
 import VmsFaqSection from '@/components/solutions/vms/FaqSection';
 import VmsCtaSection from '@/components/solutions/vms/Ctasection';
+import VmsTaglineStrip from '@/components/solutions/vms/TaglineStrip';
 
 export default function VmsSolutionsPage() {
   return (
@@ -18,23 +22,35 @@ export default function VmsSolutionsPage() {
       {/* 1 — Hero */}
       <VmsHeroSection />
 
-      {/* 2 — Why VMS */}
+      {/* 2 — Control Room Banner */}
+      <VmsControlRoomBanner />
+
+      {/* 3 — Why VMS */}
       <VmsWhySection />
 
-      {/* 3 — Core Capabilities */}
+      {/* 4 — Key Benefits */}
+      <VmsKeyBenefitsSection />
+
+      {/* 5 — Core Capabilities */}
       <VmsCapabilitiesSection />
 
-      {/* 4 — Integrations */}
-      <VmsIntegrationsSection />
-
-      {/* 5 — Scenarios */}
+      {/* 6 — Application Scenarios */}
       <VmsScenariosSection />
 
-      {/* 6 — FAQ */}
+      {/* 7 — Industries We Serve */}
+      <VmsIndustriesSection />
+
+      {/* 8 — Why Choose SecureAAi VMS */}
+      <VmsWhyChooseSection />
+
+      {/* 9 — FAQ */}
       <VmsFaqSection />
 
-      {/* 7 — CTA */}
+      {/* 10 — CTA */}
       <VmsCtaSection />
+
+      {/* 11 — Tagline Strip */}
+      <VmsTaglineStrip />
 
       <Footer />
     </main>

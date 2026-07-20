@@ -82,28 +82,18 @@ function ProductsMega() {
 
 /* ─── SOLUTIONS MEGA ─────────────────────────────────────────────── */
 function SolutionsMega() {
-  const industries = ['Airports', 'Government', 'Smart Cities', 'Logistics', 'Retail', 'Healthcare', 'Education', 'Critical Infrastructure'];
   const capabilities = [
-    { label: 'ANPR', href: '/solutions/anpr' },
-    { label: 'VMS', href: '/solutions/vms' },
-    { label: 'Smart Parking', href: '/solutions/parking' },
-    { label: 'Access Control', href: '#' },
-    { label: 'AI Analytics', href: '#' },
-    { label: 'Intelligent Surveillance', href: '#' }
+    { label: 'ANPR Central Monitoring Solution', href: '/solutions/anpr' },
+    { label: 'Entrance & Exit Management', href: '/solutions/entrance-exit-management' },
+    { label: 'Smart Pay Parking Solution', href: '/solutions/parking' },
+    { label: 'Parking Lot Management', href: '/solutions/parking-lot-management' },
+    { label: 'VMS Solution', href: '/solutions/vms' },
   ];
   return (
     <div className="mega-panel">
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, maxWidth: 520 }}>
+        <div style={{ maxWidth: 340 }}>
           <div className="mega-col">
-            <div className="mega-col-head">Industries</div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-              {industries.map(i => (
-                <a key={i} href="#" className="mega-link">{i}</a>
-              ))}
-            </div>
-          </div>
-          <div className="mega-col" style={{ borderLeft: '1px solid #f1f5f9' }}>
             <div className="mega-col-head">Capabilities</div>
             {capabilities.map(c => (
               <a key={c.label} href={c.href} className="mega-link" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -510,14 +500,11 @@ export default function Navbar() {
                     {item.label === 'Solutions' && (
                       <>
                         {[
-                          { label: 'Airports', href: '#' },
-                          { label: 'Government', href: '#' },
-                          { label: 'Smart Cities', href: '#' },
-                          { label: 'Logistics', href: '#' },
-                          { label: 'ANPR', href: '/solutions/anpr' },
-                          { label: 'VMS', href: '/solutions/vms' },
-                          { label: 'Smart Parking', href: '/solutions/parking' },
-                          { label: 'AI Analytics', href: '#' }
+                          { label: 'ANPR Central Monitoring Solution', href: '/solutions/anpr' },
+                          { label: 'Entrance & Exit Management', href: '/solutions/entrance-exit-management' },
+                          { label: 'Smart Pay Parking Solution', href: '/solutions/parking' },
+                          { label: 'Parking Lot Management', href: '/solutions/parking-lot-management' },
+                          { label: 'VMS Solution', href: '/solutions/vms' }
                         ].map(s => (
                           <a key={s.label} href={s.href} className="mobile-sub-link">{s.label}</a>
                         ))}

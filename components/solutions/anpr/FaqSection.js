@@ -70,14 +70,16 @@ export default function SiproFaqSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className={`border rounded-2xl overflow-hidden transition-colors ${isOpen ? 'bg-white border-sky-200 shadow-md' : 'bg-slate-100 border-slate-200 hover:border-slate-300'}`}
+                  className={`border rounded-2xl overflow-hidden transition-colors ${isOpen ? 'bg-white shadow-md' : 'bg-slate-100 border-slate-200 hover:border-slate-300'}`}
+                  style={isOpen ? { borderColor: 'rgba(1,97,254,.3)' } : undefined}
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? -1 : i)}
                     className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
                   >
                     <span className="font-bold text-slate-900 pr-4">{faq.q}</span>
-                    <span className={`text-xl transition-transform duration-300 ${isOpen ? 'rotate-180 text-sky-500' : 'text-slate-400'}`}>
+                    <span className={`text-xl transition-transform duration-300 ${isOpen ? 'rotate-180' : 'text-slate-400'}`}
+                      style={isOpen ? { color: '#0161FE' } : undefined}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </span>
                   </button>

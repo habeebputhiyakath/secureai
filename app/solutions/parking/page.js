@@ -3,12 +3,15 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ParkingHeroSection from '@/components/solutions/parking/HeroSection';
-import ParkingWhySection from '@/components/solutions/parking/WhyParkingSection';
 import ParkingScenariosSection from '@/components/solutions/parking/ScenariosSection';
+import ParkingWhySection from '@/components/solutions/parking/WhyParkingSection';
 import ParkingCapabilitiesSection from '@/components/solutions/parking/CapabilitiesSection';
 import ParkingEcosystemSection from '@/components/solutions/parking/EcosystemSection';
+import ParkingBenefitsSection from '@/components/solutions/parking/BenefitsSection';
+import ParkingWhyChooseSection from '@/components/solutions/parking/WhyChooseSection';
 import ParkingFaqSection from '@/components/solutions/parking/FaqSection';
 import ParkingCtaSection from '@/components/solutions/parking/Ctasection';
+import ParkingTaglineStrip from '@/components/solutions/parking/TaglineStrip';
 
 export default function ParkingSolutionsPage() {
   return (
@@ -18,23 +21,32 @@ export default function ParkingSolutionsPage() {
       {/* 1 — Hero */}
       <ParkingHeroSection />
 
-      {/* 2 — Why Smart Parking */}
-      <ParkingWhySection />
-
-      {/* 3 — Scenarios */}
+      {/* 2 — Ticketless Entry Banner */}
       <ParkingScenariosSection />
 
-      {/* 4 — Capabilities */}
+      {/* 3 — Why SmartPay */}
+      <ParkingWhySection />
+
+      {/* 4 — SmartPay Solution Features */}
       <ParkingCapabilitiesSection />
 
-      {/* 5 — Ecosystem & Industries */}
+      {/* 5 — Industries We Serve */}
       <ParkingEcosystemSection />
 
-      {/* 6 — FAQ */}
+      {/* 6 — Benefits */}
+      <ParkingBenefitsSection />
+
+      {/* 7 — Why Choose SecureAAi SmartPay */}
+      <ParkingWhyChooseSection />
+
+      {/* 8 — FAQ */}
       <ParkingFaqSection />
 
-      {/* 7 — CTA */}
+      {/* 9 — CTA */}
       <ParkingCtaSection />
+
+      {/* 10 — Tagline Strip */}
+      <ParkingTaglineStrip />
 
       <Footer />
     </main>

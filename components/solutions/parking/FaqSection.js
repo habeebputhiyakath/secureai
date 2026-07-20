@@ -4,28 +4,28 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
-    q: 'What is a Smart Parking Solution?',
-    a: 'It is an intelligent ecosystem that transforms traditional parking facilities using AI-powered ANPR, occupancy detection, parking guidance, enforcement, and centralized management.'
+    q: 'What is SecureAAi SmartPay Parking Solution?',
+    a: 'SmartPay is a comprehensive parking payment and revenue management service that delivers seamless, secure, and cashless parking experiences, integrated with our Smart Parking, ANPR, VMS, and Access Control technologies.'
   },
   {
-    q: 'How does ANPR-based parking management work?',
-    a: 'ANPR cameras automatically read the license plates of vehicles entering and exiting, allowing for ticketless, contactless access and automated billing without manual intervention.'
+    q: 'What payment methods does SmartPay support?',
+    a: 'Credit cards, debit cards, QR payments, mobile wallets, NFC payments, online banking, corporate billing, and monthly parking accounts.'
   },
   {
-    q: 'Can the system support multiple parking sites?',
-    a: 'Yes, the Centralized Parking Management Platform enables you to monitor and manage multiple distributed parking facilities from a single dashboard.'
+    q: 'Does SmartPay require paper tickets?',
+    a: 'No. Using SecureAAi ANPR technology, vehicles are automatically identified on entry and exit, and charges are calculated and paid digitally — no paper ticket is ever issued.'
   },
   {
-    q: 'Is cloud management available?',
-    a: 'Yes, our solution features a Cloud Platform for remote monitoring, multi-site management, and secure access from anywhere.'
+    q: 'Can SmartPay integrate with our existing ANPR or VMS systems?',
+    a: 'Yes. SmartPay integrates seamlessly with Si.PRO ANPR, SiVMS Enterprise, TRACKSi Fleet Management, barrier gates, access control systems, ERP systems, and accounting software.'
   },
   {
-    q: 'Does SecureAAi support dynamic pricing?',
-    a: 'Yes, the intelligent bay monitoring and centralized software support dynamic pricing based on occupancy levels, peak hours, and stay duration.'
+    q: 'Does SmartPay support subscription or membership parking?',
+    a: 'Yes. Flexible subscription plans are available for employees, residents, VIP members, corporate clients, fleet operators, contractors, and visitors.'
   },
   {
-    q: 'Can occupancy information be displayed on LED boards?',
-    a: 'Absolutely. The Parking Guidance System integrates with indoor and outdoor LED display boards to guide drivers directly to available zones or bays in real time.'
+    q: 'Can I access revenue reports and analytics?',
+    a: 'Yes. Centralized dashboards provide daily and monthly revenue, transaction history, tax reports, and business intelligence such as occupancy trends and payment method breakdowns.'
   }
 ];
 
@@ -74,14 +74,16 @@ export default function ParkingFaqSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
-                  className={`border rounded-2xl overflow-hidden transition-colors ${isOpen ? 'bg-slate-50 border-emerald-300 shadow-md' : 'bg-white border-slate-200 hover:border-emerald-100'}`}
+                  className={`border rounded-2xl overflow-hidden transition-colors ${isOpen ? 'bg-slate-50 shadow-md' : 'bg-white border-slate-200'}`}
+                  style={isOpen ? { borderColor: 'rgba(1,97,254,.3)' } : undefined}
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? -1 : i)}
                     className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
                   >
                     <span className="font-bold text-slate-900 pr-4">{faq.q}</span>
-                    <span className={`text-xl transition-transform duration-300 ${isOpen ? 'rotate-180 text-emerald-600' : 'text-slate-400'}`}>
+                    <span className={`text-xl transition-transform duration-300 ${isOpen ? 'rotate-180' : 'text-slate-400'}`}
+                      style={isOpen ? { color: '#0161FE' } : undefined}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
                     </span>
                   </button>
